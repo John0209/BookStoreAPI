@@ -1261,6 +1261,45 @@
             "rid": "win"
           }
         }
+      },
+      "BookStoreAPI.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/BookStoreAPI.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BookStoreAPI.Core.dll": {}
+        }
+      },
+      "BookStoreAPI.Infracstructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "BookStoreAPI.Core": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "7.0.5",
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.5"
+        },
+        "compile": {
+          "bin/placeholder/BookStoreAPI.Infracstructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BookStoreAPI.Infracstructure.dll": {}
+        }
+      },
+      "Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "BookStoreAPI.Core": "1.0.0",
+          "BookStoreAPI.Infracstructure": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Service.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Service.dll": {}
+        }
       }
     }
   },
@@ -3746,15 +3785,33 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "BookStoreAPI.Core/1.0.0": {
+      "type": "project",
+      "path": "../BookStoreAPI.Core/BookStoreAPI.Core.csproj",
+      "msbuildProject": "../BookStoreAPI.Core/BookStoreAPI.Core.csproj"
+    },
+    "BookStoreAPI.Infracstructure/1.0.0": {
+      "type": "project",
+      "path": "../BookStoreAPI.Infracstructure/BookStoreAPI.Infracstructure.csproj",
+      "msbuildProject": "../BookStoreAPI.Infracstructure/BookStoreAPI.Infracstructure.csproj"
+    },
+    "Service/1.0.0": {
+      "type": "project",
+      "path": "../Service/Service.csproj",
+      "msbuildProject": "../Service/Service.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "BookStoreAPI.Core >= 1.0.0",
+      "BookStoreAPI.Infracstructure >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.16",
       "Microsoft.EntityFrameworkCore >= 7.0.5",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.5",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.5",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.5",
+      "Service >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.2.3"
     ]
   },
@@ -3785,7 +3842,17 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Code C#\\BookStoreAPI\\BookStoreAPI\\BookStoreAPI.Core\\BookStoreAPI.Core.csproj": {
+              "projectPath": "D:\\Code C#\\BookStoreAPI\\BookStoreAPI\\BookStoreAPI.Core\\BookStoreAPI.Core.csproj"
+            },
+            "D:\\Code C#\\BookStoreAPI\\BookStoreAPI\\BookStoreAPI.Infracstructure\\BookStoreAPI.Infracstructure.csproj": {
+              "projectPath": "D:\\Code C#\\BookStoreAPI\\BookStoreAPI\\BookStoreAPI.Infracstructure\\BookStoreAPI.Infracstructure.csproj"
+            },
+            "D:\\Code C#\\BookStoreAPI\\BookStoreAPI\\Service\\Service.csproj": {
+              "projectPath": "D:\\Code C#\\BookStoreAPI\\BookStoreAPI\\Service\\Service.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

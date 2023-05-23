@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookStoreAPI.Core.Model
+namespace BookStoreAPI.Core.Model;
+
+public class Admin
 {
-    internal class Admin
-    {
-    }
+   public int Id { get; set; }
+   public string user { get; set; }
+   public string password { get; set; }
 }
