@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FsrbV5zMUTt429JCfQJFsiIucrbj9AvVwekxNaFA/CaQgSi3J5kbMM7kLFxk3GSx18vbDRjgxczs/MeQq+SipQ==",
+  "dgSpecHash": "EjvGuvRJ9q1PKaJmQRC3YN1OV3LUePzbP77ukeyZBvoq1nXu9rdyPrYq1TuhpzT3M6UG4SYt8Xwn3HWSbC/C4Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\VU\\Documents\\GitHub\\BookStoreAPI\\BookStoreAPI\\BookStoreAPI.Core\\BookStoreAPI.Core.csproj",
+  "projectFilePath": "D:\\Code C#\\BookStoreAPI\\BookStoreAPI\\BookStoreAPI.Core\\BookStoreAPI.Core.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

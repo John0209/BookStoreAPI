@@ -3764,11 +3764,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\VU\\Documents\\GitHub\\BookStoreAPI\\BookStoreAPI\\BookStoreAPI\\BookStoreAPI.csproj",
+      "projectUniqueName": "D:\\Code C#\\BookStoreAPI\\BookStoreAPI\\BookStoreAPI\\BookStoreAPI.csproj",
       "projectName": "BookStoreAPI",
-      "projectPath": "C:\\Users\\VU\\Documents\\GitHub\\BookStoreAPI\\BookStoreAPI\\BookStoreAPI\\BookStoreAPI.csproj",
+      "projectPath": "D:\\Code C#\\BookStoreAPI\\BookStoreAPI\\BookStoreAPI\\BookStoreAPI.csproj",
       "packagesPath": "C:\\Users\\VU\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\VU\\Documents\\GitHub\\BookStoreAPI\\BookStoreAPI\\BookStoreAPI\\obj\\",
+      "outputPath": "D:\\Code C#\\BookStoreAPI\\BookStoreAPI\\BookStoreAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\VU\\AppData\\Roaming\\NuGet\\NuGet.Config",

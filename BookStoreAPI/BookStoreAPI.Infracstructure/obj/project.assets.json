@@ -3516,11 +3516,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\VU\\Documents\\GitHub\\BookStoreAPI\\BookStoreAPI\\BookStoreAPI.Infracstructure\\BookStoreAPI.Infracstructure.csproj",
+      "projectUniqueName": "D:\\Code C#\\BookStoreAPI\\BookStoreAPI\\BookStoreAPI.Infracstructure\\BookStoreAPI.Infracstructure.csproj",
       "projectName": "BookStoreAPI.Infracstructure",
-      "projectPath": "C:\\Users\\VU\\Documents\\GitHub\\BookStoreAPI\\BookStoreAPI\\BookStoreAPI.Infracstructure\\BookStoreAPI.Infracstructure.csproj",
+      "projectPath": "D:\\Code C#\\BookStoreAPI\\BookStoreAPI\\BookStoreAPI.Infracstructure\\BookStoreAPI.Infracstructure.csproj",
       "packagesPath": "C:\\Users\\VU\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\VU\\Documents\\GitHub\\BookStoreAPI\\BookStoreAPI\\BookStoreAPI.Infracstructure\\obj\\",
+      "outputPath": "D:\\Code C#\\BookStoreAPI\\BookStoreAPI\\BookStoreAPI.Infracstructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\VU\\AppData\\Roaming\\NuGet\\NuGet.Config",
