@@ -1,0 +1,17 @@
+D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI.Infracstructure\bin\Release\net6.0\BookStoreAPI.Infracstructure.deps.json
+D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI.Infracstructure\bin\Release\net6.0\BookStoreAPI.Infracstructure.runtimeconfig.json
+D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI.Infracstructure\bin\Release\net6.0\BookStoreAPI.Infracstructure.dll
+D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI.Infracstructure\bin\Release\net6.0\BookStoreAPI.Infracstructure.pdb
+D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI.Infracstructure\bin\Release\net6.0\BookStoreAPI.Core.dll
+D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI.Infracstructure\bin\Release\net6.0\BookStoreAPI.Core.pdb
+D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI.Infracstructure\obj\Release\net6.0\BookStoreAPI.Infracstructure.csproj.AssemblyReference.cache
+D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI.Infracstructure\obj\Release\net6.0\BookStoreAPI.Infracstructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI.Infracstructure\obj\Release\net6.0\BookStoreAPI.Infracstructure.AssemblyInfoInputs.cache
+D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI.Infracstructure\obj\Release\net6.0\BookStoreAPI.Infracstructure.AssemblyInfo.cs
+D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI.Infracstructure\obj\Release\net6.0\BookStoreAPI.Infracstructure.csproj.CoreCompileInputs.cache
+D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI.Infracstructure\obj\Release\net6.0\BookStoreAPI.Infracstructure.csproj.CopyComplete
+D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI.Infracstructure\obj\Release\net6.0\BookStoreAPI.Infracstructure.dll
+D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI.Infracstructure\obj\Release\net6.0\refint\BookStoreAPI.Infracstructure.dll
+D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI.Infracstructure\obj\Release\net6.0\BookStoreAPI.Infracstructure.pdb
+D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI.Infracstructure\obj\Release\net6.0\BookStoreAPI.Infracstructure.genruntimeconfig.cache
+D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI.Infracstructure\obj\Release\net6.0\ref\BookStoreAPI.Infracstructure.dll

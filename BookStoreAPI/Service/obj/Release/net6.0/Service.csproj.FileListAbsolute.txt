@@ -1,0 +1,17 @@
+D:\Code C#\BookStoreAPI\BookStoreAPI\Service\bin\Release\net6.0\Service.deps.json
+D:\Code C#\BookStoreAPI\BookStoreAPI\Service\bin\Release\net6.0\Service.dll
+D:\Code C#\BookStoreAPI\BookStoreAPI\Service\bin\Release\net6.0\Service.pdb
+D:\Code C#\BookStoreAPI\BookStoreAPI\Service\bin\Release\net6.0\BookStoreAPI.Core.dll
+D:\Code C#\BookStoreAPI\BookStoreAPI\Service\bin\Release\net6.0\BookStoreAPI.Infracstructure.dll
+D:\Code C#\BookStoreAPI\BookStoreAPI\Service\bin\Release\net6.0\BookStoreAPI.Core.pdb
+D:\Code C#\BookStoreAPI\BookStoreAPI\Service\bin\Release\net6.0\BookStoreAPI.Infracstructure.pdb
+D:\Code C#\BookStoreAPI\BookStoreAPI\Service\obj\Release\net6.0\Service.csproj.AssemblyReference.cache
+D:\Code C#\BookStoreAPI\BookStoreAPI\Service\obj\Release\net6.0\Service.GeneratedMSBuildEditorConfig.editorconfig
+D:\Code C#\BookStoreAPI\BookStoreAPI\Service\obj\Release\net6.0\Service.AssemblyInfoInputs.cache
+D:\Code C#\BookStoreAPI\BookStoreAPI\Service\obj\Release\net6.0\Service.AssemblyInfo.cs
+D:\Code C#\BookStoreAPI\BookStoreAPI\Service\obj\Release\net6.0\Service.csproj.CoreCompileInputs.cache
+D:\Code C#\BookStoreAPI\BookStoreAPI\Service\obj\Release\net6.0\Service.csproj.CopyComplete
+D:\Code C#\BookStoreAPI\BookStoreAPI\Service\obj\Release\net6.0\Service.dll
+D:\Code C#\BookStoreAPI\BookStoreAPI\Service\obj\Release\net6.0\refint\Service.dll
+D:\Code C#\BookStoreAPI\BookStoreAPI\Service\obj\Release\net6.0\Service.pdb
+D:\Code C#\BookStoreAPI\BookStoreAPI\Service\obj\Release\net6.0\ref\Service.dll
