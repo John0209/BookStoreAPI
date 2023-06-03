@@ -19,15 +19,22 @@ public class DbContextClass : DbContext
 
     }
     #region DbSet
-    public DbSet<Admin> Admins { get; set; }
+    public DbSet<Book> Books { get; set; }
+    public DbSet<BookingRequest> Requests { get; set; }
+    public DbSet<Category> Categorys { get; set; }
+    public DbSet<ImageBook> ImageBooksBooks { get; set; }
+    public DbSet<Importation> Importations { get; set; }
+    public DbSet<ImportationDetail> ImportationDetails { get; set; }
+    public DbSet<Inventory> Inventories { get; set; }
+    public DbSet<InventoryDetail> InventoryDetails { get; set; }
+    public DbSet<Order> Orders { get; set; }
+    public DbSet<OrderDetail> OrderDetails { get; set; }
+    public DbSet<Role> Roles { get; set; }
+    public DbSet<User> Users { get; set; }
     #endregion
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Admin>(en =>
-        {
-            en.ToTable("Admin");
-            en.HasKey(u => u.Id);
-        });
+        
     }
 }
