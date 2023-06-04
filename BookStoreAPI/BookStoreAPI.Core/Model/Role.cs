@@ -10,5 +10,6 @@ namespace BookStoreAPI.Core.Model
     {
         int Role_Id { get; set; }
         string Role_Name { get; set; }
+
     }
 }

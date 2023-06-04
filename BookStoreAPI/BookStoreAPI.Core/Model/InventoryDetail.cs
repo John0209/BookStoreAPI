@@ -13,6 +13,6 @@ namespace BookStoreAPI.Core.Model
         string Book_Id { get; set; }
         int Inventory_Quantity { get; set; }
         string Inventory_Note { get; set; }
-        bool Is_Inventory_Status { get; set; }
+       
     }
 }

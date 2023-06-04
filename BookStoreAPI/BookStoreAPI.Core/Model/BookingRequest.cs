@@ -16,6 +16,6 @@ namespace BookStoreAPI.Core.Model
         DateTime Request_Date { get; set; }
         DateTime Request_Date_Done { get; set; }
         string Request_Note { get; set; }
-        bool Is_Request_Book_Status { get; set; }
+        bool Is_Request_Status { get; set; }
     }
 }

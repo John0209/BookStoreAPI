@@ -10,5 +10,6 @@ namespace BookStoreAPI.Core.Model
     {
         string Category_Id { get; set; }
         string Category_Name { get; set; }
+        bool Is_Category_Status { get; set; }
     }
 }

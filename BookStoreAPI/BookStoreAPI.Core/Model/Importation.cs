@@ -12,5 +12,6 @@ namespace BookStoreAPI.Core.Model
         string Employee_Id { get; set; }
         DateTime Import_Date { get; set; }
         string Request_Id { get; set; }
+        bool Is_Import_Status { get; set; }
     }
 }

@@ -15,5 +15,6 @@ namespace BookStoreAPI.Core.Model
         string User_Address { get; set; }
         string User_Phone { get; set; }
         bool Is_User_Gender { get; set; }
+        bool Is_User_Status { get; set; }
     }
 }

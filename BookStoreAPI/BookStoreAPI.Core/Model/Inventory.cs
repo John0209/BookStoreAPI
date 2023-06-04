@@ -11,5 +11,6 @@ namespace BookStoreAPI.Core.Model
         string Inventory_Id { get; set; }
         string Employee_Id { get;set; }
         DateTime Inventory_Date_Into { get; set; }
+        bool Is_Inventory_Status { get; set; }
     }
 }

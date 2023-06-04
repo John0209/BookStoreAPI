@@ -15,6 +15,6 @@ namespace BookStoreAPI.Core.Model
         float Import_Price { get; set; }
         float Import_Amount { get; set; }
         string Import_Note { get; set; }
-        bool Is_Import_Status { get; set; }
+       
     }
 }
