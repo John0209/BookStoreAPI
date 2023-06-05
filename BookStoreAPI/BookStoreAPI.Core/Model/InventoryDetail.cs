@@ -8,11 +8,13 @@ namespace BookStoreAPI.Core.Model
 {
     public class InventoryDetail
     {
-        string Inventory_Detail_Id { get; set; }
-        string Inventory_Id { get; set; }
-        string Book_Id { get; set; }
-        int Inventory_Quantity { get; set; }
-        string Inventory_Note { get; set; }
-       
+        public string Inventory_Detail_Id { get; set; }
+        public string Inventory_Id { get; set; }
+        public string Book_Id { get; set; }
+        public int Inventory_Detail_Quantity { get; set; }
+        public string Inventory_Detail_Note { get; set; }
+        public Book Book { get; set; }
+        public Inventory Inventory { get; set; }
+
     }
 }

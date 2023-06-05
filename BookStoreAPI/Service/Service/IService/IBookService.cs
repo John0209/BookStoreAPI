@@ -10,7 +10,7 @@ namespace Service.Service.IService
     public interface IBookService
     {
         Task<bool> CreateBook(Book book);
-        Task<IEnumerable<Book>> GetBook();
+        Task<IEnumerable<Book>> GetAllBook();
         Task<Book> GetBookById(string bookId);
         Task<Book> GetBookByName(string bookName);
         Task<bool> UpdateBook(Book book);

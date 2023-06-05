@@ -8,10 +8,15 @@ namespace BookStoreAPI.Core.Model
 {
     public class Importation
     {
-        string Import_Id { get; set; }
-        string Employee_Id { get; set; }
-        DateTime Import_Date { get; set; }
-        string Request_Id { get; set; }
-        bool Is_Import_Status { get; set; }
+        public string Import_Id { get; set; }
+        public string User_Id { get; set; }
+       
+        public int Import_Quantity { get; set; }
+        public float Import_Amount { get; set; }
+        public bool Is_Import_Status { get; set; }
+
+        public User User { get; set; }
+        public ICollection<ImportationDetail> ImportationDetails { get; set; }
+        public ICollection<BookingRequest> BookingRequests { get; set; }
     }
 }

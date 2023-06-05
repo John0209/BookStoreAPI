@@ -8,8 +8,10 @@ namespace BookStoreAPI.Core.Model
 {
     public class ImageBook
     {
-        int Image_Id { get; set; }
-        string Image_Name { get; set; }
-        string Image_URL { get; set; }
+        public int Image_Id { get; set; }
+        public string Book_Id { get; set; }
+        public string Image_Name { get; set; }
+        public string Image_URL { get; set; }
+        public Book Book { get; set; }
     }
 }

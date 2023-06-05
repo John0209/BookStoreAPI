@@ -10,7 +10,7 @@ namespace Service.Service.IService
     public interface IImportationDetailService
     {
         Task<bool> CreateImportDetail(ImportationDetail importDetail);
-        Task<IEnumerable<ImportationDetail>> GetImportDetail();
+        Task<IEnumerable<ImportationDetail>> GetAllImportDetail();
         Task<Book> GetImportDetailById(string importDetailId);
         Task<bool> UpdateImportDetail(ImportationDetail importDetail);
         //Task<bool> DeleteImportDetail(string importDetailId);

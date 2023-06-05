@@ -8,9 +8,11 @@ namespace BookStoreAPI.Core.Model
 {
     public class Inventory
     {
-        string Inventory_Id { get; set; }
-        string Employee_Id { get;set; }
-        DateTime Inventory_Date_Into { get; set; }
-        bool Is_Inventory_Status { get; set; }
+        public string Inventory_Id { get; set; }
+        public string User_Id { get; set; }
+        public DateTime Inventory_Date_Into { get; set; }
+        public bool Is_Inventory_Status { get; set; }
+        public User User { get; set; }
+        public ICollection<InventoryDetail> InventoryDetails { get; set; }
     }
 }

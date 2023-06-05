@@ -10,7 +10,7 @@ namespace Service.Service.IService
     public interface ICategoryService
     {
         Task<bool> CreateCategory(Category category);
-        Task<IEnumerable<Category>> GetCategory();
+        Task<IEnumerable<Category>> GetAllCategory();
         Task<Book> GetCategoryById(string categoryId);
         Task<bool> UpdateCategory(Category category);
         Task<bool> DeleteCategory(string categoryId);

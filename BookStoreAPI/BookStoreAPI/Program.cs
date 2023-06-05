@@ -11,8 +11,20 @@ builder.Services.AddDIServices(builder.Configuration);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-//Scope
-builder.Services.AddScoped<IAdminService,AdminService>();
+//Scoped
+builder.Services.AddScoped<IBookService,BookService>();
+builder.Services.AddScoped<IRoleService, RoleService>();
+builder.Services.AddScoped<IImageService, ImageService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IInventoryService, InventoryService>();
+builder.Services.AddScoped<IInventoryDetailService, InventoryDetailService>();
+builder.Services.AddScoped<IRequestService, RequestService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IImportationService, ImportationService>();
+builder.Services.AddScoped<IImportationDetailService, ImportationDetailService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IOrderDetailService, OrderDetailService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

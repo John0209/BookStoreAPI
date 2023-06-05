@@ -8,8 +8,9 @@ namespace BookStoreAPI.Core.Model
 {
     public class Category
     {
-        string Category_Id { get; set; }
-        string Category_Name { get; set; }
-        bool Is_Category_Status { get; set; }
+        public string Category_Id { get; set; }
+        public string Category_Name { get; set; }
+        public bool Is_Category_Status { get; set; }
+        public ICollection<Book> Books { get; set; }
     }
 }

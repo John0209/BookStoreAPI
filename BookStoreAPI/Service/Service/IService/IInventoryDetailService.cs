@@ -10,7 +10,7 @@ namespace Service.Service.IService
     public interface IInventoryDetailService
     {
         Task<bool> CreateInventoryDetail(InventoryDetail inventoryDetail);
-        Task<IEnumerable<InventoryDetail>> GetInventoryDetail();
+        Task<IEnumerable<InventoryDetail>> GetAllInventoryDetail();
         Task<Book> GetInventoryDetailById(string inventoryDetailId);
         Task<bool> UpdateInventoryDetail(InventoryDetail inventoryDetail);
     }

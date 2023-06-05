@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Model\Role.cs~RFf28a9b5.TMP" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,6 @@
-﻿using BookStoreAPI.Infracstructure.Helper;
+﻿using BookStoreAPI.Core.Interface;
+using BookStoreAPI.Infracstructure.Helper;
+using BookStoreAPI.Infracstructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,7 +21,19 @@ public static class ServiceExtension
         {
             object value = option.UseSqlServer(configuration.GetConnectionString("BookStore"));
         });
-
+        services.AddScoped<IUnitOfWorkRepository, UnitOfWork>();
+        services.AddScoped<IBookRepository, BookRepository>();
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<IBookingRequestRepository, RequestRepository>();
+        services.AddScoped<IImageBookRepository, ImageRepository>();
+        services.AddScoped<IImportationDetailRepository, ImportationDetailRepository>();
+        services.AddScoped<IImportationRepository, ImportationRepository>();
+        services.AddScoped<IInventoryDetailRepository,InventoryDetailRepository>();
+        services.AddScoped<IInventoryRepository, InventoryRepository>();
+        services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
+        services.AddScoped<IOrderRepository, OrderRepository>();
+        services.AddScoped<IRoleRepository,RoleRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
         return services;
     }
 }
