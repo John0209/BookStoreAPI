@@ -1,4 +1,5 @@
-﻿using BookStoreAPI.Core.Model;
+﻿using BookStoreAPI.Core.DTO;
+using BookStoreAPI.Core.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,9 @@ namespace Service.Service.IService
     public interface IUserService
     {
         Task<bool> CreateUser(User user);
+        Task<User> CheckLogin(LoginDTO login);
         Task<IEnumerable<User>> GetAllUser();
-        Task<Book> GetUserById(string userId);
+        Task<User> GetUserById(string userId);
         Task<bool> UpdateUser(User user);
         Task<bool> DeleteUser(string userId);
     }

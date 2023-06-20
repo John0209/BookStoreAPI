@@ -2,6 +2,8 @@ using BookStoreAPI.Core.Model;
 using BookStoreAPI.Infracstructure.ServiceExtension;
 using Service.Service;
 using Service.Service.IService;
+using AutoMapper;
+using BookStoreAPI.Helper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,7 +26,7 @@ builder.Services.AddScoped<IImportationService, ImportationService>();
 builder.Services.AddScoped<IImportationDetailService, ImportationDetailService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IOrderDetailService, OrderDetailService>();
-
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -33,7 +35,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "bookstore");
+    c.RoutePrefix = string.Empty;
+});
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

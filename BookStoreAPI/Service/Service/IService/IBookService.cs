@@ -1,4 +1,5 @@
-﻿using BookStoreAPI.Core.Model;
+﻿using BookStoreAPI.Core.DTO;
+using BookStoreAPI.Core.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,8 @@ namespace Service.Service.IService
     {
         Task<bool> CreateBook(Book book);
         Task<IEnumerable<Book>> GetAllBook();
-        Task<Book> GetBookById(string bookId);
-        Task<Book> GetBookByName(string bookName);
+        Task<BookDetailDTO> GetBookById(string bookId);
+        Task<IEnumerable<Book>> GetBookByName(string bookName);
         Task<bool> UpdateBook(Book book);
         Task<bool> DeleteBook(string bookId);
     }

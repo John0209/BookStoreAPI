@@ -1,4 +1,5 @@
-﻿using BookStoreAPI.Core.Model;
+﻿using BookStoreAPI.Core.Interface;
+using BookStoreAPI.Core.Model;
 using Service.Service.IService;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,12 @@ namespace Service.Service
 {
     public class CategoryService : ICategoryService
     {
+        IUnitOfWorkRepository _unit;
+        public CategoryService(IUnitOfWorkRepository unit)
+        {
+            _unit = unit;
+        }
+
         public Task<bool> CreateCategory(Category category)
         {
             throw new NotImplementedException();
@@ -20,14 +27,24 @@ namespace Service.Service
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Category>> GetAllCategory()
+        public async Task<IEnumerable<Category>> GetAllCategory()
         {
-            throw new NotImplementedException();
+            var result = await _unit.Category.GetAll();
+            if(result != null)
+            {
+                return result;
+            }
+            return null;
         }
 
-        public Task<Book> GetCategoryById(string categoryId)
+        public async Task<Category> GetCategoryById(string categoryId)
         {
-            throw new NotImplementedException();
+            var result= await _unit.Category.GetById(categoryId);
+            if(result != null)
+            {
+                return result;
+            }
+            return null;
         }
 
         public Task<bool> UpdateCategory(Category category)

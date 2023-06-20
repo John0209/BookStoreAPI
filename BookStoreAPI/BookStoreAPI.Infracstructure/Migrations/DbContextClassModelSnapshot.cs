@@ -31,6 +31,10 @@ namespace BookStoreAPI.Infracstructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Book_Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Book_ISBN")
                         .HasColumnType("int");
 
@@ -361,6 +365,10 @@ namespace BookStoreAPI.Infracstructure.Migrations
                     b.Property<int>("Role_Id")
                         .HasColumnType("int");
 
+                    b.Property<string>("User_Account")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("User_Address")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -370,6 +378,10 @@ namespace BookStoreAPI.Infracstructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("User_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("User_Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

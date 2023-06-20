@@ -1,4 +1,6 @@
-﻿using BookStoreAPI.Core.Model;
+﻿using BookStoreAPI.Core.DTO;
+using BookStoreAPI.Core.Interface;
+using BookStoreAPI.Core.Model;
 using Service.Service.IService;
 using System;
 using System.Collections.Generic;
@@ -10,9 +12,33 @@ namespace Service.Service
 {
     public class UserService : IUserService
     {
-        public Task<bool> CreateUser(User user)
+        IUnitOfWorkRepository _unit;
+        public UserService(IUnitOfWorkRepository unit)
         {
-            throw new NotImplementedException();
+            _unit=unit;
+        }
+
+        public async Task<User> CheckLogin(LoginDTO login)
+        {
+            var user = await _unit.User.GetAll();
+            if (user != null)
+            {
+                var result = user.SingleOrDefault(u => u.User_Account == login.User_Account && u.User_Password == login.User_Password);
+                if (result != null) return result;
+                else return null;
+            }
+            return null;
+        }
+
+        public async Task<bool> CreateUser(User user)
+        {
+            if (user != null)
+            {
+                await _unit.User.Add(user);
+                var result=_unit.Save();
+                if(result >0)return true;
+            }
+            return false;
         }
 
         public Task<bool> DeleteUser(string userId)
@@ -20,14 +46,21 @@ namespace Service.Service
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<User>> GetAllUser()
+        public async Task<IEnumerable<User>> GetAllUser()
         {
-            throw new NotImplementedException();
+            var result= await _unit.User.GetAll();
+            if(result != null)
+            {
+                return result;
+            }
+            return null;
         }
 
-        public Task<Book> GetUserById(string userId)
+        public async Task<User> GetUserById(string userId)
         {
-            throw new NotImplementedException();
+           var result=await _unit.User.GetById(userId);
+            if (result != null) return result;
+            return null;
         }
 
         public Task<bool> UpdateUser(User user)

@@ -12,6 +12,7 @@ namespace BookStoreAPI.Core.Model
         public string Category_Id { get; set; }
         public string Book_Title { get; set; }
         public string Book_Author { get; set; }
+        public string Book_Description { get; set; }
         public float Book_Price { get; set; }
         public int Book_Year_Public { get; set; }
         public int Book_ISBN { get; set; }

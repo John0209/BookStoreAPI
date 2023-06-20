@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BookStoreAPI.Infracstructure.Migrations
 {
     /// <inheritdoc />
-    public partial class DbInitBook : Migration
+    public partial class AddDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -67,6 +67,8 @@ namespace BookStoreAPI.Infracstructure.Migrations
                 {
                     User_Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Role_Id = table.Column<int>(type: "int", nullable: false),
+                    User_Account = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    User_Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     User_Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     User_Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     User_Address = table.Column<string>(type: "nvarchar(max)", nullable: false),

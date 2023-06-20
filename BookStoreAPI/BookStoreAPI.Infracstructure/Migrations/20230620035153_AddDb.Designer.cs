@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookStoreAPI.Infracstructure.Migrations
 {
     [DbContext(typeof(DbContextClass))]
-    [Migration("20230605134845_DbInitBook")]
-    partial class DbInitBook
+    [Migration("20230620035153_AddDb")]
+    partial class AddDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -364,6 +364,10 @@ namespace BookStoreAPI.Infracstructure.Migrations
                     b.Property<int>("Role_Id")
                         .HasColumnType("int");
 
+                    b.Property<string>("User_Account")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("User_Address")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -373,6 +377,10 @@ namespace BookStoreAPI.Infracstructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("User_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("User_Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

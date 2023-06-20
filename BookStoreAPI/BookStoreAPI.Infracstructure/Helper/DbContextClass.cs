@@ -81,7 +81,8 @@ public class DbContextClass : DbContext
             entity.ToTable("User");
             entity.HasKey(y => y.User_Id);
             entity.HasOne(y => y.Role).WithMany(y => y.Users).HasForeignKey(y=>y.Role_Id).IsRequired(true);
-
+            entity.Property(y => y.User_Account).IsRequired(true);
+            entity.Property(y=> y.User_Password).IsRequired(true);
         });
         modelBuilder.Entity<Book>(entity =>
         {
