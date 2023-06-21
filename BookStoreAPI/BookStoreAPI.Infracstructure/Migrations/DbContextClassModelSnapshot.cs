@@ -218,8 +218,19 @@ namespace BookStoreAPI.Infracstructure.Migrations
                     b.Property<string>("Inventory_Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Book_Id")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<DateTime>("Inventory_Date_Into")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Inventory_Note")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Inventory_Quantity")
+                        .HasColumnType("int");
 
                     b.Property<bool>("Is_Inventory_Status")
                         .HasColumnType("bit");
@@ -230,37 +241,11 @@ namespace BookStoreAPI.Infracstructure.Migrations
 
                     b.HasKey("Inventory_Id");
 
+                    b.HasIndex("Book_Id");
+
                     b.HasIndex("User_Id");
 
                     b.ToTable("Inventory", (string)null);
-                });
-
-            modelBuilder.Entity("BookStoreAPI.Core.Model.InventoryDetail", b =>
-                {
-                    b.Property<string>("Inventory_Detail_Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Book_Id")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Inventory_Detail_Note")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Inventory_Detail_Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Inventory_Id")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Inventory_Detail_Id");
-
-                    b.HasIndex("Book_Id");
-
-                    b.HasIndex("Inventory_Id");
-
-                    b.ToTable("InventoryDetail", (string)null);
                 });
 
             modelBuilder.Entity("BookStoreAPI.Core.Model.Order", b =>
@@ -469,32 +454,21 @@ namespace BookStoreAPI.Infracstructure.Migrations
 
             modelBuilder.Entity("BookStoreAPI.Core.Model.Inventory", b =>
                 {
+                    b.HasOne("BookStoreAPI.Core.Model.Book", "Books")
+                        .WithMany("Inventory")
+                        .HasForeignKey("Book_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("BookStoreAPI.Core.Model.User", "User")
                         .WithMany("Inventory")
                         .HasForeignKey("User_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Books");
+
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("BookStoreAPI.Core.Model.InventoryDetail", b =>
-                {
-                    b.HasOne("BookStoreAPI.Core.Model.Book", "Book")
-                        .WithMany("Inventory_Detail")
-                        .HasForeignKey("Book_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("BookStoreAPI.Core.Model.Inventory", "Inventory")
-                        .WithMany("InventoryDetails")
-                        .HasForeignKey("Inventory_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Book");
-
-                    b.Navigation("Inventory");
                 });
 
             modelBuilder.Entity("BookStoreAPI.Core.Model.Order", b =>
@@ -546,7 +520,7 @@ namespace BookStoreAPI.Infracstructure.Migrations
 
                     b.Navigation("Importation_Detail");
 
-                    b.Navigation("Inventory_Detail");
+                    b.Navigation("Inventory");
 
                     b.Navigation("Order_Detail");
                 });
@@ -561,11 +535,6 @@ namespace BookStoreAPI.Infracstructure.Migrations
                     b.Navigation("BookingRequests");
 
                     b.Navigation("ImportationDetails");
-                });
-
-            modelBuilder.Entity("BookStoreAPI.Core.Model.Inventory", b =>
-                {
-                    b.Navigation("InventoryDetails");
                 });
 
             modelBuilder.Entity("BookStoreAPI.Core.Model.Order", b =>

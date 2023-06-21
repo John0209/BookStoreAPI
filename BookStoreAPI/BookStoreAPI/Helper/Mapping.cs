@@ -10,6 +10,7 @@ namespace BookStoreAPI.Helper
         { 
             CreateMap<User,UserDTO>().ReverseMap();
             CreateMap<BookDetailDTO,Book>().ReverseMap(); 
+            CreateMap<ImageDTO,ImageBook>().ReverseMap();
         }
 
     }

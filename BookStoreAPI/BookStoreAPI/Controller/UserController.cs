@@ -19,7 +19,7 @@ namespace BookStoreAPI.Controller
             _user = user;
             _mapper = mapper;
         }    
-        [HttpGet("login")]
+        [HttpPost("login")]
         public async Task<IActionResult> Login(LoginDTO login)
         {
             if(login != null)
@@ -38,7 +38,8 @@ namespace BookStoreAPI.Controller
             var respone = await _user.GetAllUser();
             if (respone != null)
             {
-                return Ok(respone);
+                var user = _mapper.Map<IEnumerable<UserDTO>>(respone);
+                return Ok(user);
             }
             return BadRequest();
         }
@@ -50,7 +51,17 @@ namespace BookStoreAPI.Controller
             {
                 return Ok(respone);
             }
-            return BadRequest();
+            return BadRequest(userId + " don't exists");
+        }
+        [HttpGet("getUserByName")]
+        public async Task<IActionResult> GetUserByName(string userName)
+        {
+            var respone = await _user.GetUserByName(userName);
+            if (respone != null)
+            {
+                return Ok(respone);
+            }
+            return BadRequest(userName+" don't exists");
         }
         [HttpPost("createUser")]
         public async Task<IActionResult> CreateUser(UserDTO userDTO)
@@ -62,6 +73,24 @@ namespace BookStoreAPI.Controller
                 if(result) return Ok("Create User Success");
             }
             return BadRequest("Create User Fail");
+        }
+        [HttpPut("updateUser")]
+        public async Task<IActionResult> UpdateUser(UserDTO userDTO)
+        {
+            if (userDTO != null)
+            {
+                var user = _mapper.Map<User>(userDTO);
+                var result = await _user.UpdateUser(user);
+                if (result) return Ok("Update User Success");
+            }
+            return BadRequest("Update User Fail");
+        }
+        [HttpDelete("deleteUser")]
+        public async Task<IActionResult> DeleteUser(string userId)
+        {
+                var result = await _user.DeleteUser(userId);
+                if (result) return Ok("Delete User Success");
+                return BadRequest("Delete User Fail");
         }
     }
 }

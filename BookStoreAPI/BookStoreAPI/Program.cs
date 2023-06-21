@@ -19,7 +19,6 @@ builder.Services.AddScoped<IRoleService, RoleService>();
 builder.Services.AddScoped<IImageService, ImageService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IInventoryService, InventoryService>();
-builder.Services.AddScoped<IInventoryDetailService, InventoryDetailService>();
 builder.Services.AddScoped<IRequestService, RequestService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IImportationService, ImportationService>();

@@ -5,6 +5,8 @@ D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\bin\Debug\net6.0\BookStoreAPI.
 D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\bin\Debug\net6.0\BookStoreAPI.runtimeconfig.json
 D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\bin\Debug\net6.0\BookStoreAPI.dll
 D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\bin\Debug\net6.0\BookStoreAPI.pdb
+D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\bin\Debug\net6.0\AutoMapper.dll
+D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\bin\Debug\net6.0\Azure.Core.dll
 D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\bin\Debug\net6.0\Azure.Identity.dll
 D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\bin\Debug\net6.0\Humanizer.dll
@@ -92,5 +94,3 @@ D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\obj\Debug\net6.0\refint\BookSt
 D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\obj\Debug\net6.0\BookStoreAPI.pdb
 D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\obj\Debug\net6.0\BookStoreAPI.genruntimeconfig.cache
 D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\obj\Debug\net6.0\ref\BookStoreAPI.dll
-D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\bin\Debug\net6.0\AutoMapper.dll
-D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

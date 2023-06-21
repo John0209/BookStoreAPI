@@ -23,8 +23,6 @@ namespace BookStoreAPI.Infracstructure.Repositories
 
         public IImportationDetailRepository ImportationDetail { get; }
 
-        public IInventoryDetailRepository InventoryDetail { get; }
-
         public IInventoryRepository Inventory { get; }
 
         public IOrderDetailRepository OrderDetail { get; }
@@ -36,7 +34,7 @@ namespace BookStoreAPI.Infracstructure.Repositories
 
         public UnitOfWork(DbContextClass dbContextClass, IBookingRequestRepository request, IBookRepository books, ICategoryRepository category, 
             IImageBookRepository images, IImportationRepository importation, IImportationDetailRepository importationDetail, 
-            IInventoryDetailRepository inventoryDetail, IInventoryRepository inventory, IOrderDetailRepository orderDetail, IOrderRepository order,
+             IInventoryRepository inventory, IOrderDetailRepository orderDetail, IOrderRepository order,
             IRoleRepository role, IUserRepository user)
         {
             _dbContextClass = dbContextClass;
@@ -46,7 +44,6 @@ namespace BookStoreAPI.Infracstructure.Repositories
             Images = images;
             Importation = importation;
             ImportationDetail = importationDetail;
-            InventoryDetail = inventoryDetail;
             Inventory = inventory;
             OrderDetail = orderDetail;
             Order = order;

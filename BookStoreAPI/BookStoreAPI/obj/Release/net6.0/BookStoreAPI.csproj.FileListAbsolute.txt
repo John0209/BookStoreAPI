@@ -92,3 +92,5 @@ D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\obj\Release\net6.0\refint\Book
 D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\obj\Release\net6.0\BookStoreAPI.pdb
 D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\obj\Release\net6.0\BookStoreAPI.genruntimeconfig.cache
 D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\obj\Release\net6.0\ref\BookStoreAPI.dll
+D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\bin\Release\net6.0\AutoMapper.dll
+D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\bin\Release\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

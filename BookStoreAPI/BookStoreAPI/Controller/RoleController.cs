@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.Service.IService;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace BookStoreAPI.Controller
 {
@@ -9,9 +10,20 @@ namespace BookStoreAPI.Controller
     public class RoleController : ControllerBase
     {
         IRoleService _role;
-        RoleController(IRoleService role)
+        public RoleController(IRoleService role)
         {
             _role = role;
         }
+        [HttpGet("getRole")]
+        public async Task<IActionResult> GetRole()
+        {
+            var respone = await _role.GetAllRole();
+            if (respone != null)
+            {
+                return Ok(respone);
+            }
+            return BadRequest();
+        }
     }
+
 }

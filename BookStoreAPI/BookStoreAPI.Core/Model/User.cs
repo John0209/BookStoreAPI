@@ -18,6 +18,7 @@ namespace BookStoreAPI.Core.Model
         public string User_Phone { get; set; }
         public bool Is_User_Gender { get; set; }
         public bool Is_User_Status { get; set; }
+
         public ICollection<Order> Order { get; set; }
         public ICollection<Importation> Importation { get; set; }
         public ICollection<Inventory> Inventory { get; set; }

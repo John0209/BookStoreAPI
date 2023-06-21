@@ -14,20 +14,36 @@ namespace Service.Service
     {
         IUnitOfWorkRepository _unit;
         ICategoryRepository _cate;
+        Book m_book;
         
         public BookService(IUnitOfWorkRepository unit, ICategoryRepository cate)
         {
             _unit = unit;
             _cate = cate;
+            m_book = new Book();
         }
-        public Task<bool> CreateBook(Book book)
+        public async Task<bool> CreateBook(Book book)
         {
-            throw new NotImplementedException();
+            if (book != null)
+            {
+                await _unit.Books.Add(book);
+                var result = _unit.Save();
+                if (result > 0) return true;
+            }
+            return false;
         }
 
-        public Task<bool> DeleteBook(string bookId)
+        public async Task<bool> DeleteBook(string bookId)
         {
-            throw new NotImplementedException();
+            var m_update = _unit.Books.SingleOrDefault(m_book, u => u.Book_Id==bookId);
+            if (m_update != null)
+            {
+                m_update.Is_Book_Status = false;
+                _unit.Books.Update(m_update);
+                var result = _unit.Save();
+                if (result > 0) return true;
+            }
+            return false;
         }
 
         public Task<IEnumerable<Book>> GetAllBook()
@@ -48,9 +64,10 @@ namespace Service.Service
             {
                 var bookDetail = new BookDetailDTO();
                 //lấy thuộc tính gắn vào book detail
-                bookDetail.Book_Id = bookId;
+                bookDetail.Book_Id = result.Book_Id;
                 bookDetail.Book_Title = result.Book_Title;
                 bookDetail.Book_Description = result.Book_Description;
+                bookDetail.Category_Id=result.Category_Id;
                 bookDetail.Category_Name = GetCategoryName(bookDetail, result,listCate);
                 bookDetail.Book_Author= result.Book_Author;
                 bookDetail.Book_Price= result.Book_Price;
@@ -79,9 +96,24 @@ namespace Service.Service
             return null;
         }
 
-        public Task<bool> UpdateBook(Book book)
+        public async Task<bool> UpdateBook(Book book)
         {
-            throw new NotImplementedException();
+            var m_update = _unit.Books.SingleOrDefault(m_book, u => u.Book_Id == book.Book_Id);
+            if (m_update != null)
+            {
+                m_update.Category_Id= book.Category_Id;
+                m_update.Book_Title= book.Book_Title;
+                m_update.Book_Author= book.Book_Author;
+                m_update.Book_Price= book.Book_Price;
+                m_update.Book_Description= book.Book_Description;
+                m_update.Book_Price=book.Book_Price;
+                m_update.Book_Year_Public= book.Book_Year_Public;
+                m_update.Is_Book_Status= book.Is_Book_Status;
+                _unit.Books.Update(m_update);
+                var result = _unit.Save();
+                if (result > 0) return true;
+            }
+            return false;
         }
     }
 }

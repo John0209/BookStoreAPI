@@ -14,7 +14,6 @@ namespace BookStoreAPI.Core.Interface
         IImageBookRepository Images { get; }
         IImportationRepository Importation { get; }
         IImportationDetailRepository ImportationDetail { get; }
-        IInventoryDetailRepository InventoryDetail { get; }
         IInventoryRepository Inventory { get; }
         IOrderDetailRepository OrderDetail { get; }
         IOrderRepository Order { get; }

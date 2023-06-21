@@ -20,7 +20,7 @@ namespace BookStoreAPI.Core.Model
         public ICollection<OrderDetail> Order_Detail { get; set; }
         public ICollection<ImportationDetail> Importation_Detail { get; set;}
         public ICollection<BookingRequest> BookingRequest { get; set;}
-        public ICollection<InventoryDetail> Inventory_Detail { get; set; }
+        public ICollection<Inventory> Inventory { get; set; }
         public ICollection<ImageBook> Image_Book { get; set; }
         public Category Category { get; set; }
     }

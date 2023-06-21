@@ -28,7 +28,6 @@ public static class ServiceExtension
         services.AddScoped<IImageBookRepository, ImageRepository>();
         services.AddScoped<IImportationDetailRepository, ImportationDetailRepository>();
         services.AddScoped<IImportationRepository, ImportationRepository>();
-        services.AddScoped<IInventoryDetailRepository,InventoryDetailRepository>();
         services.AddScoped<IInventoryRepository, InventoryRepository>();
         services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
         services.AddScoped<IOrderRepository, OrderRepository>();

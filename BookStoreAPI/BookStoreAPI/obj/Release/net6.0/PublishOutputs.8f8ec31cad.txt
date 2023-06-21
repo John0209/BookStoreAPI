@@ -4,6 +4,8 @@ D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\obj\Release\net6.0\PubTmp\Out\
 D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\obj\Release\net6.0\PubTmp\Out\BookStoreAPI.dll
 D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\obj\Release\net6.0\PubTmp\Out\BookStoreAPI.runtimeconfig.json
 D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\obj\Release\net6.0\PubTmp\Out\BookStoreAPI.pdb
+D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\obj\Release\net6.0\PubTmp\Out\AutoMapper.dll
+D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\obj\Release\net6.0\PubTmp\Out\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\obj\Release\net6.0\PubTmp\Out\Azure.Core.dll
 D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\obj\Release\net6.0\PubTmp\Out\Azure.Identity.dll
 D:\Code C#\BookStoreAPI\BookStoreAPI\BookStoreAPI\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Authentication.JwtBearer.dll

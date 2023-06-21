@@ -14,6 +14,7 @@ namespace Service.Service.IService
         Task<User> CheckLogin(LoginDTO login);
         Task<IEnumerable<User>> GetAllUser();
         Task<User> GetUserById(string userId);
+        Task<IEnumerable<User>> GetUserByName(string name);
         Task<bool> UpdateUser(User user);
         Task<bool> DeleteUser(string userId);
     }

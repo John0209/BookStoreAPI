@@ -26,7 +26,6 @@ public class DbContextClass : DbContext
     public DbSet<Importation> Importations { get; set; }
     public DbSet<ImportationDetail> ImportationDetails { get; set; }
     public DbSet<Inventory> Inventories { get; set; }
-    public DbSet<InventoryDetail> InventoryDetails { get; set; }
     public DbSet<Order> Orders { get; set; }
     public DbSet<OrderDetail> OrderDetails { get; set; }
     public DbSet<Role> Roles { get; set; }
@@ -52,20 +51,13 @@ public class DbContextClass : DbContext
             entity.HasKey(r => r.Category_Id);
         });
         
-        modelBuilder.Entity<InventoryDetail>(entity =>
-        {
-            entity.ToTable("InventoryDetail");
-            entity.HasKey(y => y.Inventory_Detail_Id);
-            entity.HasOne(y=> y.Book).WithMany(y=> y.Inventory_Detail).HasForeignKey(y=>y.Book_Id).IsRequired(true);
-            entity.HasOne(y=>y.Inventory).WithMany(y=>y.InventoryDetails).HasForeignKey(y=>y.Inventory_Id).IsRequired(true);
-            entity.Property(y=>y.Inventory_Detail_Note).IsRequired(false);
-
-        });
+        
         modelBuilder.Entity<Inventory>(entity =>
         {
             entity.ToTable("Inventory");
             entity.HasKey(y => y.Inventory_Id);
             entity.HasOne(y => y.User).WithMany(y => y.Inventory).HasForeignKey(y => y.User_Id).IsRequired(true);
+            entity.HasOne(y => y.Books).WithMany(y => y.Inventory).HasForeignKey(y => y.Book_Id).IsRequired(true);
 
         });
         modelBuilder.Entity<BookingRequest>(entity =>
