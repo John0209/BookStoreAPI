@@ -1,4 +1,4 @@
-﻿using BookStoreAPI.Core.DTO;
+﻿using BookStoreAPI.Core.DiplayDTO;
 using BookStoreAPI.Core.Model;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,8 @@ namespace Service.Service.IService
     public interface IInventoryService
     {
         Task<bool> CreateInventory(Inventory inventory);
-        Task<IEnumerable<InventoryDTO>> GetAllInventory();
+        Task<IEnumerable<DisplayInventoryDTO>> GetAllInventory();
+        Task<IEnumerable<Inventory>> GetInventory();
         Task<Book> GetInventoryById(string inventoryId);
         Task<bool> UpdateInventory(Inventory inventory);
         Task<bool> DeleteInventory(string inventoryId);

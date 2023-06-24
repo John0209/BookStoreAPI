@@ -1,4 +1,4 @@
-﻿using BookStoreAPI.Core.DTO;
+﻿using BookStoreAPI.Core.DiplayDTO;
 using BookStoreAPI.Core.Interface;
 using BookStoreAPI.Core.Model;
 using Service.Service.IService;
@@ -16,6 +16,7 @@ namespace Service.Service
         //IUserService _user;
         //IBookService _book;
         //IImageService _image;
+        private Inventory m_inventory;
         public InventoryService(IUnitOfWorkRepository unit)
           //  , IUserService user, IBookService book, IImageService image)
         {
@@ -25,33 +26,69 @@ namespace Service.Service
             //_image = image;
         }
 
-        public Task<bool> CreateInventory(Inventory inventory)
+        public async Task<bool> CreateInventory(Inventory inventory)
         {
-            throw new NotImplementedException();
+            if (inventory != null)
+            {
+                var m_list= await GetInventory();
+                inventory.Inventory_Id = CreateInventoryId(m_list);
+                await _unit.Inventory.Add(inventory);
+                var result = _unit.Save();
+                if (result > 0) return true;
+            }
+            return false;
         }
 
-        public Task<bool> DeleteInventory(string inventoryId)
+        private string CreateInventoryId(IEnumerable<Inventory> m_list)
         {
-            throw new NotImplementedException();
+            if (m_list.Count() < 1)
+            {
+                var id = "I1";
+                return id;
+            }
+            var m_id = m_list.LastOrDefault().Inventory_Id;
+            if(m_id!=null)
+            {
+                var number=Int32.Parse(m_id.Substring(m_id.Length-1));
+                number++;
+                var InventoryId = "I" + number;
+                return InventoryId;
+            }
+            return null;
         }
 
-        public async Task<IEnumerable<InventoryDTO>> GetAllInventory()
+        public async Task<bool> DeleteInventory(string inventoryId)
+        {
+            var m_update = _unit.Inventory.SingleOrDefault(m_inventory, u => u.Inventory_Id==inventoryId);
+            if (m_update != null)
+            {
+                m_update.Is_Inventory_Status = false;
+                _unit.Inventory.Update(m_update);
+                var result = _unit.Save();
+                if (result > 0) return true;
+            }
+            return false;
+        }
+
+        public async Task<IEnumerable<DisplayInventoryDTO>> GetAllInventory()
         {
             var listInventory = await _unit.Inventory.GetAll();
             var listUser = await _unit.User.GetAll();
             var listImage = await _unit.Images.GetAll();
             var listBook= await _unit.Books.GetAll();
             //lấy thông tin để show ra screen
-            var listDisplay = new List<InventoryDTO>();
+            var listDisplay = new List<DisplayInventoryDTO>();
             foreach(var i in listInventory)
             {
-                var dto = new InventoryDTO();
+                var dto = new DisplayInventoryDTO();
+                dto.Inventory_Id = i.Inventory_Id;
                 dto.Image_URL = GetURL(listImage, i.Book_Id);
                 dto.Book_Title = GetTitle(listBook, i.Book_Id);
                 dto.Inventory_Quantity = i.Inventory_Quantity;
                 dto.Inventory_Note = i.Inventory_Note;
                 dto.Inventory_Date_Into=i.Inventory_Date_Into;
                 dto.User_Name = GetName(listUser, i.User_Id);
+                dto.Is_Inventory_Status= i.Is_Inventory_Status;
                 listDisplay.Add(dto);
             }
             if(listDisplay.Count()>0) return listDisplay;
@@ -84,6 +121,16 @@ namespace Service.Service
         public Task<bool> UpdateInventory(Inventory inventory)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<Inventory>> GetInventory()
+        {
+            var result = await _unit.Inventory.GetAll();
+            if (result != null)
+            {
+                return result;
+            }
+            return null;
         }
     }
 }

@@ -8,11 +8,12 @@ namespace BookStoreAPI.Core.DTO
 {
     public class ImportationDTO
     {
-        public string Image_Url { get; set; }
-        public string Book_Title { get; set; }
-        public int Import_Detail_Quantity { get; set; }
-        public float Import_Detail_Price { get; set; }
-        public float Import_Detail_Amount { get; set; }
+        public string Import_Id { get; set; }
+        public string User_Id { get; set; }
+        public int Import_Quantity { get; set; }
+        public float Import_Amount { get; set; }
+        public DateTime Import_Date_Done { get; set; }
+        public bool Is_Import_Status { get; set; }
 
     }
 }

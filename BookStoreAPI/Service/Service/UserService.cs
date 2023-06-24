@@ -36,13 +36,32 @@ namespace Service.Service
         {
             if (user != null)
             {
+                var m_list = await GetAllUser();
+                user.User_Id = CreateId(m_list);
                 await _unit.User.Add(user);
                 var result=_unit.Save();
                 if(result >0)return true;
             }
             return false;
         }
-
+        private string CreateId(IEnumerable<User> m_list)
+        {
+            if (m_list.Count() < 1)
+            {
+                var id = "U1";
+                return id;
+            }
+            var m_id = m_list.LastOrDefault().User_Id;
+            if (m_id != null)
+            {
+                var number = Int32.Parse(m_id.Substring(m_id.Length - 1));
+                number++;
+                var id = "U" + number;
+                return id;
+            }
+              return null;
+           
+        }
         public async Task<bool> DeleteUser(string userId)
         {
             var m_update = _unit.User.SingleOrDefault(m_user, u => u.User_Id == userId);

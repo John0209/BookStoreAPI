@@ -9,11 +9,11 @@ namespace BookStoreAPI.Controller
 {
     [Route("api/image")]
     [ApiController]
-    public class ImageControllerr : ControllerBase
+    public class ImageController : ControllerBase
     {
         IImageService _image;
         IMapper _map;
-        public ImageControllerr(IImageService image,IMapper mapper)
+        public ImageController(IImageService image, IMapper mapper)
         {
             _image = image;
             _map = mapper;
@@ -27,7 +27,7 @@ namespace BookStoreAPI.Controller
             {
                 return Ok(respone);
             }
-            return BadRequest();
+            return BadRequest("null");
         }
         [HttpPost("addImage")]
         public async Task<IActionResult> AddImage(ImageDTO imageDTO)

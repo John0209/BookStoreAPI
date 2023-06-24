@@ -29,7 +29,7 @@ namespace BookStoreAPI.Controller
                 var book=_mapper.Map<IEnumerable<BookDetailDTO>>(respone);
                     return Ok(book);
                 }
-            return BadRequest();
+            return BadRequest("null");
         }
         [HttpGet("searchBook")]
         public async Task<IActionResult> SearchBook(string nameBook)

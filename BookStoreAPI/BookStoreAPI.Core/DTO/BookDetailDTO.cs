@@ -15,6 +15,7 @@ namespace BookStoreAPI.Core.DTO
         public string Book_Author { get; set; }
         public string Book_Description { get; set; }
         public float Book_Price { get; set; }
+        public int Book_Quantity { get; set; }
         public int Book_Year_Public { get; set; }
         public int Book_ISBN { get; set; }
         public bool Is_Book_Status { get; set; }

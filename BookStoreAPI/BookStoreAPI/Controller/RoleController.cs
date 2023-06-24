@@ -22,7 +22,7 @@ namespace BookStoreAPI.Controller
             {
                 return Ok(respone);
             }
-            return BadRequest();
+            return BadRequest("null");
         }
     }
 

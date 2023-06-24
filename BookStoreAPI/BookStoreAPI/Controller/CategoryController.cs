@@ -23,7 +23,7 @@ namespace BookStoreAPI.Controller
                 {
                     return Ok(respone);
                 }
-            return BadRequest();
+            return BadRequest("null");
         }
         [HttpGet("getCategoryById")]
         public async Task<IActionResult> GetCategoryById(string CategoryId)

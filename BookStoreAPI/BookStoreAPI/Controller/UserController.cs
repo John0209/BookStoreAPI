@@ -30,7 +30,7 @@ namespace BookStoreAPI.Controller
                     return Ok(respone);
                 }
             }
-            return BadRequest();
+            return BadRequest("Accound or Pass Wrong!");
         }
         [HttpGet("getUser")]
         public async Task<IActionResult> GetUser()
@@ -41,7 +41,7 @@ namespace BookStoreAPI.Controller
                 var user = _mapper.Map<IEnumerable<UserDTO>>(respone);
                 return Ok(user);
             }
-            return BadRequest();
+            return BadRequest("null");
         }
         [HttpGet("getUserById")]
         public async Task<IActionResult> GetUserById(string userId)

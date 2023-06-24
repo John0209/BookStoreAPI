@@ -41,6 +41,9 @@ namespace BookStoreAPI.Infracstructure.Migrations
                     b.Property<float>("Book_Price")
                         .HasColumnType("real");
 
+                    b.Property<int>("Book_Quantity")
+                        .HasColumnType("int");
+
                     b.Property<string>("Book_Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -75,8 +78,8 @@ namespace BookStoreAPI.Infracstructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<bool>("Is_Request_Status")
-                        .HasColumnType("bit");
+                    b.Property<int>("Is_Request_Status")
+                        .HasColumnType("int");
 
                     b.Property<float>("Request_Amount")
                         .HasColumnType("real");
@@ -164,6 +167,9 @@ namespace BookStoreAPI.Infracstructure.Migrations
 
                     b.Property<float>("Import_Amount")
                         .HasColumnType("real");
+
+                    b.Property<DateTime>("Import_Date_Done")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("Import_Quantity")
                         .HasColumnType("int");

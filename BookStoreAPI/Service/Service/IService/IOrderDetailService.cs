@@ -1,4 +1,5 @@
-﻿using BookStoreAPI.Core.Model;
+﻿using BookStoreAPI.Core.DiplayDTO;
+using BookStoreAPI.Core.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace Service.Service.IService
         Task<bool> CreateOrderDetail(OrderDetail orderDetail);
         Task<IEnumerable<OrderDetail>> GetAllOrderDetail();
         Task<Book> GetOrderDetailById(string orderDetailId);
+        Task<IEnumerable<DisplayOrderDetailDTO>> GetDisplayOrderDetail();
         Task<bool> UpdateOrderDetail(OrderDetail orderDetail);
     }
 }

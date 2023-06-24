@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
+using BookStoreAPI.Core.DTO;
+using BookStoreAPI.Core.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.Service.IService;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace BookStoreAPI.Controller
 {
@@ -25,6 +28,24 @@ namespace BookStoreAPI.Controller
                 return Ok(respone);
             }
             return BadRequest("inventory don't exists");
+        }
+        [HttpPost("addInventory")]
+        public async Task<IActionResult> AddInventory(InventoryDTO dto)
+        {
+            if (dto != null)
+            {
+                var inventory=_map.Map<Inventory>(dto);
+                var result = await _inventory.CreateInventory(inventory);
+                if (result) return Ok("Add Inventory Success");
+            }
+            return BadRequest("Add Inventory Fail");
+        }
+        [HttpDelete("deleteInventory")]
+        public async Task<IActionResult> DeleteInventory(string inventoryId)
+        {
+            var result = await _inventory.DeleteInventory(inventoryId);
+            if (result) return Ok("Delete Inventory Success");
+            return BadRequest("Delete Inventory Fail");
         }
     }
 }

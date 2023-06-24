@@ -1,4 +1,5 @@
-﻿using BookStoreAPI.Core.Model;
+﻿using BookStoreAPI.Core.DiplayDTO;
+using BookStoreAPI.Core.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace Service.Service.IService
     {
         Task<bool> CreateImportDetail(ImportationDetail importDetail);
         Task<IEnumerable<ImportationDetail>> GetAllImportDetail();
+        Task<IEnumerable<DiplayImportationDetailDTO>> GetDiplayImportDetail();
         Task<Book> GetImportDetailById(string importDetailId);
         Task<bool> UpdateImportDetail(ImportationDetail importDetail);
         //Task<bool> DeleteImportDetail(string importDetailId);

@@ -26,11 +26,30 @@ namespace Service.Service
         {
             if (book != null)
             {
+                var m_list = await GetAllBook();
+                book.Book_Id = CreateId(m_list);
                 await _unit.Books.Add(book);
                 var result = _unit.Save();
                 if (result > 0) return true;
             }
             return false;
+        }
+        private string CreateId(IEnumerable<Book> m_list)
+        {
+            if (m_list.Count() < 1)
+            {
+                var id = "B1";
+                return id;
+            }
+            var m_id = m_list.LastOrDefault().Book_Id;
+            if (m_id != null)
+            {
+                var number = Int32.Parse(m_id.Substring(m_id.Length - 1));
+                number++;
+                var id = "B" + number;
+                return id;
+            }
+            return null;
         }
 
         public async Task<bool> DeleteBook(string bookId)
@@ -71,6 +90,7 @@ namespace Service.Service
                 bookDetail.Category_Name = GetCategoryName(bookDetail, result,listCate);
                 bookDetail.Book_Author= result.Book_Author;
                 bookDetail.Book_Price= result.Book_Price;
+                bookDetail.Book_Quantity= result.Book_Quantity;
                 bookDetail.Book_Year_Public= result.Book_Year_Public;
                 bookDetail.Book_ISBN= result.Book_ISBN;
                 bookDetail.Is_Book_Status= result.Is_Book_Status;
