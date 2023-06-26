@@ -29,6 +29,16 @@ namespace BookStoreAPI.Controller
             }
             return BadRequest("inventory don't exists");
         }
+        [HttpGet("searchInventory")]
+        public async Task<IActionResult> SearchInventory(string bookName)
+        {
+            var respone = await _inventory.SearchInventory(bookName);
+            if (respone != null)
+            {
+                return Ok(respone);
+            }
+            return BadRequest(bookName+" don't exists");
+        }
         [HttpPost("addInventory")]
         public async Task<IActionResult> AddInventory(InventoryDTO dto)
         {

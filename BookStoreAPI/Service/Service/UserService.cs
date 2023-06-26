@@ -106,7 +106,7 @@ namespace Service.Service
         public async Task<bool> UpdateUser(User user)
         {
             var m_update = _unit.User.SingleOrDefault(m_user, u => u.User_Id == user.User_Id);
-            if (user != null)
+            if (m_update != null)
             {
                 m_update.User_Name = user.User_Name;
                 m_update.Role_Id= user.Role_Id;
@@ -124,5 +124,17 @@ namespace Service.Service
             return false;
         }
 
+        public async Task<bool> RestoreUser(string userId)
+        {
+            var m_update = _unit.User.SingleOrDefault(m_user, u => u.User_Id == userId);
+            if (m_update != null)
+            {
+                m_update.Is_User_Status = true;
+                _unit.User.Update(m_update);
+                var result = _unit.Save();
+                if (result > 0) return true;
+            }
+            return false;
+        }
     }
 }

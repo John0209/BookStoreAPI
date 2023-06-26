@@ -13,8 +13,9 @@ namespace Service.Service.IService
         Task<bool> CreateImportDetail(ImportationDetail importDetail);
         Task<IEnumerable<ImportationDetail>> GetAllImportDetail();
         Task<IEnumerable<DiplayImportationDetailDTO>> GetDiplayImportDetail();
-        Task<Book> GetImportDetailById(string importDetailId);
+        Task<List<DiplayImportationDetailDTO>> SearchImport(string bookName);
         Task<bool> UpdateImportDetail(ImportationDetail importDetail);
+        Task<bool> UpdateStatusRequest(string RequestId);
         //Task<bool> DeleteImportDetail(string importDetailId);
     }
 }

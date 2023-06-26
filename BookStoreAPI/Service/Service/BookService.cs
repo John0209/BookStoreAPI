@@ -135,5 +135,18 @@ namespace Service.Service
             }
             return false;
         }
+
+        public async Task<bool> RestoreBook(string bookId)
+        {
+            var m_update = _unit.Books.SingleOrDefault(m_book, u => u.Book_Id == bookId);
+            if (m_update != null)
+            {
+                m_update.Is_Book_Status = true;
+                _unit.Books.Update(m_update);
+                var result = _unit.Save();
+                if (result > 0) return true;
+            }
+            return false;
+        }
     }
 }

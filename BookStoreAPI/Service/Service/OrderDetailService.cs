@@ -62,24 +62,32 @@ namespace Service.Service
         public async Task<IEnumerable<DisplayOrderDetailDTO>> GetDisplayOrderDetail()
         {
             var orderList = await _unit.OrderDetail.GetAll();
-            var bookList = await _unit.Books.GetAll();
-            var image = await _unit.Images.GetAll();
-            // get filed để display
             var display = new List<DisplayOrderDetailDTO>();
-            foreach (var item in orderList)
-            {
-                var order = new DisplayOrderDetailDTO();
-                order.Order_Detail_Quantity=order.Order_Detail_Quantity;
-                order.Order_Detail_Price=order.Order_Detail_Price;
-                order.Order_Detail_Amount=order.Order_Detail_Amount;
-                order.Book_Title= GetTitle(item.Book_Id, bookList);
-                order.Image_URL = GetUrl(item.Book_Id, image);
-                display.Add(order);
-            }
+            // get filed để display
+            display = await GetDisplay(display, orderList);
             if (display.Count < 1) return null;
             return display;
 
         }
+
+        private async Task<List<DisplayOrderDetailDTO>> GetDisplay(List<DisplayOrderDetailDTO> display, IEnumerable<OrderDetail> orderList)
+        {
+            var bookList = await _unit.Books.GetAll();
+            var image = await _unit.Images.GetAll();
+            foreach (var item in orderList)
+            {
+                var order = new DisplayOrderDetailDTO();
+                order.Order_Id = item.Order_Id;
+                order.Order_Detail_Quantity = order.Order_Detail_Quantity;
+                order.Order_Detail_Price = order.Order_Detail_Price;
+                order.Order_Detail_Amount = order.Order_Detail_Amount;
+                order.Book_Title = GetTitle(item.Book_Id, bookList);
+                order.Image_URL = GetUrl(item.Book_Id, image);
+                display.Add(order);
+            }
+            return display;
+        }
+
         private string GetUrl(string book_Id, IEnumerable<ImageBook> image)
         {
             var url = (from b in image where b.Book_Id == book_Id select b.Image_URL).FirstOrDefault();
@@ -91,9 +99,19 @@ namespace Service.Service
             var title = (from b in bookList where b.Book_Id == book_Id select b.Book_Title).FirstOrDefault();
             return title;
         }
-        public Task<Book> GetOrderDetailById(string orderDetailId)
+        public async Task<List<DisplayOrderDetailDTO>> SearchOrder(string bookName)
         {
-            throw new NotImplementedException();
+            var books = await _unit.Books.GetAll();
+            var orders = await GetAllOrderDetail();
+            // lấy nhựng book có name cẩn search
+            var bookIdList = from b in books where (b.Book_Title.ToLower().Trim().Contains(bookName.ToLower().Trim())) select b;
+            // lấy inventory có chứa những book có id cần search
+            var orderList = (bookIdList.Join(orders, b => b.Book_Id, i => i.Book_Id, (b, i) => { return i; }));
+            //lấy thông tin để show ra screen
+            var listDisplay = new List<DisplayOrderDetailDTO>();
+            listDisplay = await GetDisplay(listDisplay, orderList);
+            if (listDisplay.Count() > 0) return listDisplay;
+            return null;
         }
 
         public Task<bool> UpdateOrderDetail(OrderDetail orderDetail)

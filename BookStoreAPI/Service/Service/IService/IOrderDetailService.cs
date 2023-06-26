@@ -12,7 +12,7 @@ namespace Service.Service.IService
     {
         Task<bool> CreateOrderDetail(OrderDetail orderDetail);
         Task<IEnumerable<OrderDetail>> GetAllOrderDetail();
-        Task<Book> GetOrderDetailById(string orderDetailId);
+        Task<List<DisplayOrderDetailDTO>> SearchOrder(string bookName);
         Task<IEnumerable<DisplayOrderDetailDTO>> GetDisplayOrderDetail();
         Task<bool> UpdateOrderDetail(OrderDetail orderDetail);
     }

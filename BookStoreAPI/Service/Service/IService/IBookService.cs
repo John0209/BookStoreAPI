@@ -16,5 +16,6 @@ namespace Service.Service.IService
         Task<IEnumerable<Book>> GetBookByName(string bookName);
         Task<bool> UpdateBook(Book book);
         Task<bool> DeleteBook(string bookId);
+        Task<bool> RestoreBook(string bookId);
     }
 }

@@ -8,6 +8,7 @@ namespace BookStoreAPI.Core.DiplayDTO
 {
     public class DisplayOrderDetailDTO
     {
+        public string Order_Id { get; set; }
         public string Image_URL { get; set; }
         public string Book_Title { get; set; }
         public int Order_Detail_Quantity { get; set; }

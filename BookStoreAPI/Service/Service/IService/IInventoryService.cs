@@ -13,7 +13,7 @@ namespace Service.Service.IService
         Task<bool> CreateInventory(Inventory inventory);
         Task<IEnumerable<DisplayInventoryDTO>> GetAllInventory();
         Task<IEnumerable<Inventory>> GetInventory();
-        Task<Book> GetInventoryById(string inventoryId);
+        Task<List<DisplayInventoryDTO>> SearchInventory(string bookName);
         Task<bool> UpdateInventory(Inventory inventory);
         Task<bool> DeleteInventory(string inventoryId);
     }

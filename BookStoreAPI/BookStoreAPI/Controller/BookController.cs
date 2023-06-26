@@ -69,6 +69,13 @@ namespace BookStoreAPI.Controller
                 if (result) return Ok("Delete Book Success");
                  return BadRequest("Delete Book Fail");
         }
+        [HttpDelete("restoreBook")]
+        public async Task<IActionResult> RestoreBook(string bookId)
+        {
+            var result = await _book.RestoreBook(bookId);
+            if (result) return Ok("Restore Book Success");
+            return BadRequest("Restore Book Fail");
+        }
         [HttpPost("createBook")]
         public async Task<IActionResult> CreateBook(BookDetailDTO dTO)
         {

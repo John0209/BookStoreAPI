@@ -207,15 +207,15 @@ namespace BookStoreAPI.Infracstructure.Migrations
                 columns: table => new
                 {
                     Request_Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Book_Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Import_Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Book_Id = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    Import_Id = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Request_Image_Url = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Request_Book_Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Request_Quantity = table.Column<int>(type: "int", nullable: false),
                     Request_Price = table.Column<float>(type: "real", nullable: false),
                     Request_Amount = table.Column<float>(type: "real", nullable: false),
                     Request_Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Request_Date_Done = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Request_Date_Done = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Request_Note = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Is_Request_Status = table.Column<bool>(type: "bit", nullable: false)
                 },

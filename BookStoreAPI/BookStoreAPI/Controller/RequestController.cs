@@ -19,6 +19,17 @@ namespace BookStoreAPI.Controller
             _request=request;
             _map = mapper;
         }
+        [HttpPut("updateRequest")]
+        public async Task<IActionResult> UpdateRequest(RequestDTO requestDTO)
+        {
+            if (requestDTO != null)
+            {
+                var request = _map.Map<BookingRequest>(requestDTO);
+                var result = await _request.UpdateRequest(request);
+                if (result) return Ok("Update Request Success");
+            }
+            return BadRequest("Update Request Fail");
+        }
         [HttpGet("getRequest")]
         public async Task<IActionResult> GetRequest()
         {
@@ -39,6 +50,20 @@ namespace BookStoreAPI.Controller
                 if (result) return Ok("Add Request Success");
             }
             return BadRequest("Add Request Fail");
+        }
+        [HttpDelete("deleteRequest")]
+        public async Task<IActionResult> DeleteRequest(string requestId)
+        {
+            var result = await _request.DeleteRequest(requestId);
+            if (result) return Ok("Delete Request Success");
+            return BadRequest("Delete Request Fail");
+        }
+        [HttpDelete("restoreRequest")]
+        public async Task<IActionResult> RestoreRequest(string requestId)
+        {
+            var result = await _request.RestoreRequest(requestId);
+            if (result) return Ok("Restore Request Success");
+            return BadRequest("Restore Request Fail");
         }
     }
 }

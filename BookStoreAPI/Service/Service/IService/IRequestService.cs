@@ -14,5 +14,6 @@ namespace Service.Service.IService
         Task<Book> GetRequestById(string requestId);
         Task<bool> UpdateRequest(BookingRequest request);
         Task<bool> DeleteRequest(string requestId);
+        Task<bool> RestoreRequest(string requestId);
     }
 }

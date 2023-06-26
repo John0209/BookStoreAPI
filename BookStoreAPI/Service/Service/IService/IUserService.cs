@@ -17,5 +17,6 @@ namespace Service.Service.IService
         Task<IEnumerable<User>> GetUserByName(string name);
         Task<bool> UpdateUser(User user);
         Task<bool> DeleteUser(string userId);
+        Task<bool> RestoreUser(string userId);
     }
 }

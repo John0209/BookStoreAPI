@@ -9,6 +9,7 @@ namespace BookStoreAPI.Core.DTO
     public class ImportationDetailDTO
     {
         public string Import_Detail_Id { get; set; }
+        public string Request_Id { get; set; }
         public string Import_Id { get; set; }
         public string Book_Id { get; set; }
         public int Import_Detail_Quantity { get; set; }

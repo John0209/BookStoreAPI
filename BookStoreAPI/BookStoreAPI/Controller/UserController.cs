@@ -92,5 +92,12 @@ namespace BookStoreAPI.Controller
                 if (result) return Ok("Delete User Success");
                 return BadRequest("Delete User Fail");
         }
+        [HttpDelete("restoreUser")]
+        public async Task<IActionResult> RestoreUser(string userId)
+        {
+            var result = await _user.RestoreUser(userId);
+            if (result) return Ok("Restore User Success");
+            return BadRequest("Restore User Fail");
+        }
     }
 }

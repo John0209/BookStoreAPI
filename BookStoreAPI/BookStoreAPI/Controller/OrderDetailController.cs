@@ -20,6 +20,16 @@ namespace BookStoreAPI.Controller
             _map = mapper;
             _order = order;
         }
+        [HttpGet("searchOrder")]
+        public async Task<IActionResult> SearchOrder(string bookName)
+        {
+            var respone = await _order.SearchOrder(bookName);
+            if (respone != null)
+            {
+                return Ok(respone);
+            }
+            return BadRequest(bookName + " don't exists");
+        }
         [HttpGet("getOrderDetail")]
         public async Task<IActionResult> GetOrderDetail()
         {

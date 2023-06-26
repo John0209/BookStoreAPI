@@ -64,8 +64,7 @@ public class DbContextClass : DbContext
         {
             entity.ToTable("Request");
             entity.HasKey(y => y.Request_Id);
-            entity.HasOne(y => y.Book).WithMany(y => y.BookingRequest).HasForeignKey(y => y.Book_Id).IsRequired(true);
-            entity.HasOne(y => y.Importation).WithMany(y => y.BookingRequests).HasForeignKey(y => y.Import_Id).IsRequired(true);
+            entity.HasOne(y => y.Book).WithMany(y => y.BookingRequest).HasForeignKey(y => y.Book_Id).IsRequired(false);
             entity.Property(y=>y.Request_Note).IsRequired(false);
         });
         modelBuilder.Entity<User>(entity =>

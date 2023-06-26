@@ -17,6 +17,5 @@ namespace BookStoreAPI.Core.Model
 
         public User User { get; set; }
         public ICollection<ImportationDetail> ImportationDetails { get; set; }
-        public ICollection<BookingRequest> BookingRequests { get; set; }
     }
 }

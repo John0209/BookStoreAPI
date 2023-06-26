@@ -64,23 +64,30 @@ namespace Service.Service
         public async Task<IEnumerable<DiplayImportationDetailDTO>> GetDiplayImportDetail()
         {
             var importList= await _unit.ImportationDetail.GetAll();
-            var bookList= await _unit.Books.GetAll();
-            var image= await _unit.Images.GetAll();
+            var display = new List<DiplayImportationDetailDTO>();
             // get filed để display
-            var display= new List<DiplayImportationDetailDTO>();
-            foreach ( var item in importList)
+            display =await GetDisplay(display, importList);
+            if (display.Count < 1) return null;
+            return display;
+
+        }
+
+        private async Task<List<DiplayImportationDetailDTO>> GetDisplay(List<DiplayImportationDetailDTO> display, IEnumerable<ImportationDetail> importList)
+        {
+            var bookList = await _unit.Books.GetAll();
+            var image = await _unit.Images.GetAll();
+            foreach (var item in importList)
             {
-                var import= new DiplayImportationDetailDTO();
-                import.Import_Detail_Quantity=item.Import_Detail_Quantity;
-                import.Import_Detail_Price=item.Import_Detail_Price;
-                import.Import_Detail_Amount=item.Import_Detail_Amount;
+                var import = new DiplayImportationDetailDTO();
+                import.Import_Id = item.Import_Id;
+                import.Import_Detail_Quantity = item.Import_Detail_Quantity;
+                import.Import_Detail_Price = item.Import_Detail_Price;
+                import.Import_Detail_Amount = item.Import_Detail_Amount;
                 import.Book_Title = GetTitle(item.Book_Id, bookList);
                 import.Image_URL = GetUrl(item.Book_Id, image);
                 display.Add(import);
             }
-            if (display.Count < 1) return null;
             return display;
-
         }
 
         private string GetUrl(string book_Id, IEnumerable<ImageBook> image)
@@ -95,9 +102,19 @@ namespace Service.Service
             return title;
         }
 
-        public Task<Book> GetImportDetailById(string importDetailId)
+        public async Task<List<DiplayImportationDetailDTO>> SearchImport(string bookName)
         {
-            throw new NotImplementedException();
+            var books = await _unit.Books.GetAll();
+            var importations = await GetAllImportDetail();
+            // lấy nhựng book có name cẩn search
+            var bookIdList = from b in books where (b.Book_Title.ToLower().Trim().Contains(bookName.ToLower().Trim())) select b;
+            // lấy inventory có chứa những book có id cần search
+            var importationList = (bookIdList.Join(importations, b => b.Book_Id, i => i.Book_Id, (b, i) => { return i; }));
+            //lấy thông tin để show ra screen
+            var listDisplay = new List<DiplayImportationDetailDTO>();
+            listDisplay = await GetDisplay(listDisplay, importationList);
+            if (listDisplay.Count() > 0) return listDisplay;
+            return null;
         }
 
         public Task<bool> UpdateImportDetail(ImportationDetail importDetail)
@@ -105,6 +122,17 @@ namespace Service.Service
             throw new NotImplementedException();
         }
 
-       
+        public async Task<bool> UpdateStatusRequest(string RequestId)
+        {
+            var request= await _unit.Request.GetById(RequestId);
+            if(request != null)
+            {
+                request.Is_Request_Status = 2;
+                _unit.Request.Update(request);
+               var result= _unit.Save();
+                if (result > 0) return true;
+            }
+            return false;
+        }
     }
 }

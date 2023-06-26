@@ -10,7 +10,6 @@ namespace BookStoreAPI.Core.Model
     {
         public string Request_Id { get; set; }
         public string Book_Id { get; set; }
-        public string Import_Id { get; set; }
         public string Request_Image_Url { get; set; }
         public string Request_Book_Name { get; set; }
         public int Request_Quantity { get; set; }
@@ -20,7 +19,6 @@ namespace BookStoreAPI.Core.Model
         public DateTime Request_Date_Done { get; set; }
         public string Request_Note { get; set; }
         public int Is_Request_Status { get; set; }
-        public Importation Importation { get; set; }
         public Book Book { get; set; }
     }
 }
