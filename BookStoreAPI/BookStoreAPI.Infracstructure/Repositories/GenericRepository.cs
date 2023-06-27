@@ -32,7 +32,7 @@ namespace BookStoreAPI.Infracstructure.Repositories
             return await _dbContext.Set<T>().ToListAsync();
         }
 
-        public async Task<T> GetById(string id)
+        public async Task<T> GetById(Guid id)
         {
             return await _dbContext.Set<T>().FindAsync(id);
         }

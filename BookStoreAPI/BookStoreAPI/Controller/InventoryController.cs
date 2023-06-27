@@ -50,12 +50,19 @@ namespace BookStoreAPI.Controller
             }
             return BadRequest("Add Inventory Fail");
         }
-        [HttpDelete("deleteInventory")]
-        public async Task<IActionResult> DeleteInventory(string inventoryId)
+        [HttpPatch("deleteInventory")]
+        public async Task<IActionResult> DeleteInventory(Guid inventoryId)
         {
             var result = await _inventory.DeleteInventory(inventoryId);
             if (result) return Ok("Delete Inventory Success");
             return BadRequest("Delete Inventory Fail");
+        }
+        [HttpPatch("restoreInventory")]
+        public async Task<IActionResult> RestoreInventory(Guid inventoryId)
+        {
+            var result = await _inventory.DeleteInventory(inventoryId);
+            if (result) return Ok("Restore Inventory Success");
+            return BadRequest("Restore Inventory Fail");
         }
     }
 }

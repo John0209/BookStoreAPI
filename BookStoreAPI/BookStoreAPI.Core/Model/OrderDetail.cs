@@ -8,9 +8,9 @@ namespace BookStoreAPI.Core.Model
 {
     public class OrderDetail
     {
-        public string Order_Detail_Id { get; set; }
-        public string Order_Id { get; set; }
-        public string Book_Id { get; set; }
+        public Guid Order_Detail_Id { get; set; }
+        public Guid Order_Id { get; set; }
+        public Guid Book_Id { get; set; }
         public int Order_Detail_Quantity { get; set; }
         public float Order_Detail_Amount { get; set; }
         public float Order_Detail_Price { get; set; }

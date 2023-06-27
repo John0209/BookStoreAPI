@@ -51,15 +51,15 @@ namespace BookStoreAPI.Controller
             }
             return BadRequest("Add Request Fail");
         }
-        [HttpDelete("deleteRequest")]
-        public async Task<IActionResult> DeleteRequest(string requestId)
+        [HttpPatch("deleteRequest")]
+        public async Task<IActionResult> DeleteRequest(Guid requestId)
         {
             var result = await _request.DeleteRequest(requestId);
             if (result) return Ok("Delete Request Success");
             return BadRequest("Delete Request Fail");
         }
-        [HttpDelete("restoreRequest")]
-        public async Task<IActionResult> RestoreRequest(string requestId)
+        [HttpPatch("restoreRequest")]
+        public async Task<IActionResult> RestoreRequest(Guid requestId)
         {
             var result = await _request.RestoreRequest(requestId);
             if (result) return Ok("Restore Request Success");

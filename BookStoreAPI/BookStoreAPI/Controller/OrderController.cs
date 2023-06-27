@@ -42,8 +42,8 @@ namespace BookStoreAPI.Controller
             }
             return BadRequest("Add Order Fail");
         }
-        [HttpDelete("deleteOrder")]
-        public async Task<IActionResult> DeleteOrder(string orderId)
+        [HttpPatch("deleteOrder")]
+        public async Task<IActionResult> DeleteOrder(Guid orderId)
         {
             var result = await _order.DeleteOrder(orderId);
             if (result) return Ok("Delete Order Success");

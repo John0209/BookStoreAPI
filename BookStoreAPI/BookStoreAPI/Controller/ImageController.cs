@@ -20,7 +20,7 @@ namespace BookStoreAPI.Controller
         }
 
         [HttpGet("getImage")]
-        public async Task<IActionResult> GetImage(string bookId)
+        public async Task<IActionResult> GetImage(Guid bookId)
         {
             var respone = await _image.GetAllImage(bookId);
             if (respone != null)

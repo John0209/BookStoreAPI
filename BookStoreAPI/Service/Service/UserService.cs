@@ -37,32 +37,17 @@ namespace Service.Service
             if (user != null)
             {
                 var m_list = await GetAllUser();
-                user.User_Id = CreateId(m_list);
+                user.User_Id = Guid.NewGuid();
+                user.Role_Id = 3;
+                user.Is_User_Status= true;
                 await _unit.User.Add(user);
                 var result=_unit.Save();
                 if(result >0)return true;
             }
             return false;
         }
-        private string CreateId(IEnumerable<User> m_list)
-        {
-            if (m_list.Count() < 1)
-            {
-                var id = "U1";
-                return id;
-            }
-            var m_id = m_list.LastOrDefault().User_Id;
-            if (m_id != null)
-            {
-                var number = Int32.Parse(m_id.Substring(m_id.Length - 1));
-                number++;
-                var id = "U" + number;
-                return id;
-            }
-              return null;
-           
-        }
-        public async Task<bool> DeleteUser(string userId)
+       
+        public async Task<bool> DeleteUser(Guid userId)
         {
             var m_update = _unit.User.SingleOrDefault(m_user, u => u.User_Id == userId);
             if (m_update != null)
@@ -85,7 +70,7 @@ namespace Service.Service
             return null;
         }
 
-        public async Task<User> GetUserById(string userId)
+        public async Task<User> GetUserById(Guid userId)
         {
            var result=await _unit.User.GetById(userId);
             if (result != null) return result;
@@ -124,7 +109,7 @@ namespace Service.Service
             return false;
         }
 
-        public async Task<bool> RestoreUser(string userId)
+        public async Task<bool> RestoreUser(Guid userId)
         {
             var m_update = _unit.User.SingleOrDefault(m_user, u => u.User_Id == userId);
             if (m_update != null)

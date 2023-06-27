@@ -11,9 +11,9 @@ namespace Service.Service.IService
     {
         Task<bool> CreateRequest(BookingRequest request);
         Task<IEnumerable<BookingRequest>> GetAllRequest();
-        Task<Book> GetRequestById(string requestId);
+        Task<Book> GetRequestById(Guid requestId);
         Task<bool> UpdateRequest(BookingRequest request);
-        Task<bool> DeleteRequest(string requestId);
-        Task<bool> RestoreRequest(string requestId);
+        Task<bool> DeleteRequest(Guid requestId);
+        Task<bool> RestoreRequest(Guid requestId);
     }
 }

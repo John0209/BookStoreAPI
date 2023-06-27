@@ -8,8 +8,8 @@ namespace BookStoreAPI.Core.DTO
 {
     public class OrderDTO
     {
-        public string Order_Id { get; set; }
-        public string User_Id { get; set; }
+        public Guid Order_Id { get; set; }
+        public Guid User_Id { get; set; }
         public string Order_Customer_Name { get; set; }
         public string Order_Customer_Address { get; set; }
         public string Order_Customer_Phone { get; set; }

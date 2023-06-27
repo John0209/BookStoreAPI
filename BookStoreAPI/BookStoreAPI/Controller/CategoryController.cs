@@ -26,7 +26,7 @@ namespace BookStoreAPI.Controller
             return BadRequest("null");
         }
         [HttpGet("getCategoryById")]
-        public async Task<IActionResult> GetCategoryById(string CategoryId)
+        public async Task<IActionResult> GetCategoryById(int CategoryId)
         {
             var respone = await _cate.GetCategoryById(CategoryId);
             if (respone != null)

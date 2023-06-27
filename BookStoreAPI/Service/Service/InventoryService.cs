@@ -31,7 +31,8 @@ namespace Service.Service
             if (inventory != null)
             {
                 var m_list= await GetInventory();
-                inventory.Inventory_Id = CreateInventoryId(m_list);
+                inventory.Inventory_Id = Guid.NewGuid();
+                inventory.Is_Inventory_Status = true;
                 await _unit.Inventory.Add(inventory);
                 var result = _unit.Save();
                 if (result > 0) return true;
@@ -39,25 +40,7 @@ namespace Service.Service
             return false;
         }
 
-        private string CreateInventoryId(IEnumerable<Inventory> m_list)
-        {
-            if (m_list.Count() < 1)
-            {
-                var id = "I1";
-                return id;
-            }
-            var m_id = m_list.LastOrDefault().Inventory_Id;
-            if(m_id!=null)
-            {
-                var number=Int32.Parse(m_id.Substring(m_id.Length-1));
-                number++;
-                var InventoryId = "I" + number;
-                return InventoryId;
-            }
-            return null;
-        }
-
-        public async Task<bool> DeleteInventory(string inventoryId)
+        public async Task<bool> DeleteInventory(Guid inventoryId)
         {
             var m_update = _unit.Inventory.SingleOrDefault(m_inventory, u => u.Inventory_Id==inventoryId);
             if (m_update != null)
@@ -101,19 +84,19 @@ namespace Service.Service
             return listDisplay;
         }
 
-        private string GetName(IEnumerable<User> listUser, string user_Id)
+        private string GetName(IEnumerable<User> listUser, Guid user_Id)
         {
             var name = (from i in listUser where i.User_Id == user_Id select i.User_Name).FirstOrDefault();
             return name;
         }
 
-        private string GetTitle(IEnumerable<Book> listBook, string book_Id)
+        private string GetTitle(IEnumerable<Book> listBook, Guid book_Id)
         {
             var title = (from i in listBook where i.Book_Id == book_Id select i.Book_Title).FirstOrDefault();
             return title;
         }
 
-        private string GetURL(IEnumerable<ImageBook> listImage, string book_Id)
+        private string GetURL(IEnumerable<ImageBook> listImage, Guid book_Id)
         {
             var url= (from i in listImage where i.Book_Id==book_Id select i.Image_URL).FirstOrDefault();
             return url;
@@ -147,6 +130,19 @@ namespace Service.Service
                 return result;
             }
             return null;
+        }
+
+        public async Task<bool> RestoreInventory(Guid inventoryId)
+        {
+            var m_update = _unit.Inventory.SingleOrDefault(m_inventory, u => u.Inventory_Id == inventoryId);
+            if (m_update != null)
+            {
+                m_update.Is_Inventory_Status = true;
+                _unit.Inventory.Update(m_update);
+                var result = _unit.Save();
+                if (result > 0) return true;
+            }
+            return false;
         }
     }
 }

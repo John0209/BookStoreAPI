@@ -41,10 +41,11 @@ namespace BookStoreAPI.Controller
                 var user = _mapper.Map<IEnumerable<UserDTO>>(respone);
                 return Ok(user);
             }
+            
             return BadRequest("null");
         }
         [HttpGet("getUserById")]
-        public async Task<IActionResult> GetUserById(string userId)
+        public async Task<IActionResult> GetUserById(Guid userId)
         {
             var respone = await _user.GetUserById(userId);
             if (respone != null)
@@ -64,7 +65,7 @@ namespace BookStoreAPI.Controller
             return BadRequest(userName+" don't exists");
         }
         [HttpPost("createUser")]
-        public async Task<IActionResult> CreateUser(UserDTO userDTO)
+        public async Task<IActionResult> CreateUser(CreateUserDTO userDTO)
         {
             if(userDTO != null)
             {
@@ -85,15 +86,15 @@ namespace BookStoreAPI.Controller
             }
             return BadRequest("Update User Fail");
         }
-        [HttpDelete("deleteUser")]
-        public async Task<IActionResult> DeleteUser(string userId)
+        [HttpPatch("deleteUser")]
+        public async Task<IActionResult> DeleteUser(Guid userId)
         {
                 var result = await _user.DeleteUser(userId);
                 if (result) return Ok("Delete User Success");
                 return BadRequest("Delete User Fail");
         }
-        [HttpDelete("restoreUser")]
-        public async Task<IActionResult> RestoreUser(string userId)
+        [HttpPatch("restoreUser")]
+        public async Task<IActionResult> RestoreUser(Guid userId)
         {
             var result = await _user.RestoreUser(userId);
             if (result) return Ok("Restore User Success");

@@ -8,7 +8,7 @@ namespace BookStoreAPI.Core.Interface
 {
     public interface IGenericRepository<T> where T : class
     {
-        Task<T> GetById(string id);
+        Task<T> GetById(Guid id);
         Task<T> GetById(int id);
         Task<IEnumerable<T>> GetAll();
         Task Add(T entity);

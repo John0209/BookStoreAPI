@@ -25,32 +25,17 @@ namespace Service.Service
             if (import != null)
             {
                 var m_list = await GetAllImport();
-                import.Import_Id = CreateId(m_list);
+                import.Import_Id = Guid.NewGuid();
+                import.Is_Import_Status = true;
                 await _unit.Importation.Add(import);
                 var result = _unit.Save();
                 if (result > 0) return true;
             }
             return false;
         }
-        private string CreateId(IEnumerable<Importation> m_list)
-        {
-            if (m_list.Count() <1)
-            {
-                var id = "IM1";
-                return id;
-            }
-            var m_id = m_list.LastOrDefault().Import_Id;
-            if (m_id != null)
-            {
-                var number = Int32.Parse(m_id.Substring(m_id.Length - 1));
-                number++;
-                var id = "IM" + number;
-                return id;
-            }
-            return null;
-        }
+        
 
-        public async Task<bool> DeleteImport(string importId)
+        public async Task<bool> DeleteImport(Guid importId)
         {
             var m_update = _unit.Importation.SingleOrDefault(m_import, u => u.Import_Id==importId);
             if (m_update != null)
@@ -91,13 +76,13 @@ namespace Service.Service
             return display;
         }
 
-        private string GetNameUser(string user_Id, IEnumerable<User> userList)
+        private string GetNameUser(Guid user_Id, IEnumerable<User> userList)
         {
             var userName = (from u in userList where u.User_Id == user_Id select u.User_Name).FirstOrDefault();
             return userName;
         }
 
-        public Task<Book> GetImportById(string importId)
+        public Task<Book> GetImportById(Guid importId)
         {
             throw new NotImplementedException();
         }

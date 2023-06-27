@@ -8,12 +8,12 @@ namespace BookStoreAPI.Core.DTO
 {
     public class UserDTO
     {
-        public string User_Id { get; set; }
-        public int Role_Id { get; set; }
+        public Guid User_Id { get; set; }
         public string User_Account { get; set; }
         public string User_Password { get; set; }
-        public string User_Name { get; set; }
         public string User_Email { get; set; }
+        public int Role_Id { get; set; }
+        public string User_Name { get; set; }
         public string User_Address { get; set; }
         public string User_Phone { get; set; }
         public string Is_User_Gender { get; set; }

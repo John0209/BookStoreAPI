@@ -24,7 +24,7 @@ namespace Service.Service
             if (request != null)
             {
                 var m_list = await GetAllRequest();
-                request.Request_Id = CreateId(m_list);
+                request.Request_Id = Guid.NewGuid();
                 request.Is_Request_Status = 1;
                 await _unit.Request.Add(request);
                 var result = _unit.Save();
@@ -32,26 +32,6 @@ namespace Service.Service
             }
             return false;
         }
-        private string CreateId(IEnumerable<BookingRequest> m_list)
-        {
-            if (m_list.Count() < 1)
-            {
-                var id = "R1";
-                return id;
-            }
-            var m_id = m_list.LastOrDefault().Request_Id;
-            if (m_id != null)
-            {
-                var number = Int32.Parse(m_id.Substring(m_id.Length - 1));
-                number++;
-                var id = "R" + number;
-                return id;
-            }
-            return null;
-        }
-
-       
-
         public async Task<IEnumerable<BookingRequest>> GetAllRequest()
         {
             var result = await _unit.Request.GetAll();
@@ -62,7 +42,7 @@ namespace Service.Service
             return null;
         }
 
-        public Task<Book> GetRequestById(string requestId)
+        public Task<Book> GetRequestById(Guid requestId)
         {
             throw new NotImplementedException();
         }
@@ -88,7 +68,7 @@ namespace Service.Service
             }
             return false;
         }
-        public async Task<bool> DeleteRequest(string requestId)
+        public async Task<bool> DeleteRequest(Guid requestId)
         {
             var m_update = _unit.Request.SingleOrDefault(m_request, u => u.Request_Id==requestId);
             if (m_update != null)
@@ -100,7 +80,7 @@ namespace Service.Service
             }
             return false;
         }
-        public async Task<bool> RestoreRequest(string requestId)
+        public async Task<bool> RestoreRequest(Guid requestId)
         {
             var m_update = _unit.Request.SingleOrDefault(m_request, u => u.Request_Id == requestId);
             if (m_update != null)

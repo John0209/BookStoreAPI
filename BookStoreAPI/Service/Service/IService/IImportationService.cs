@@ -13,8 +13,8 @@ namespace Service.Service.IService
         Task<bool> CreateImport(Importation import);
         Task<IEnumerable<Importation>> GetAllImport();
         Task<IEnumerable<DisplayImportationDTO>> GetDiplayImport();
-        Task<Book> GetImportById(string importId);
+        Task<Book> GetImportById(Guid importId);
         Task<bool> UpdateImport(Importation import);
-        Task<bool> DeleteImport(string importId);
+        Task<bool> DeleteImport(Guid importId);
     }
 }

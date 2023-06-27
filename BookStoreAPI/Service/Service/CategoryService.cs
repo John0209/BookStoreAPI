@@ -37,7 +37,7 @@ namespace Service.Service
             return null;
         }
 
-        public async Task<Category> GetCategoryById(string categoryId)
+        public async Task<Category> GetCategoryById(int categoryId)
         {
             var result= await _unit.Category.GetById(categoryId);
             if(result != null)

@@ -21,6 +21,7 @@ namespace Service.Service
             if (image != null)
             {
                 await _unit.Images.Add(image);
+
                 var result = _unit.Save();
                 if (result > 0) return true;
             }
@@ -32,7 +33,7 @@ namespace Service.Service
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<ImageBook>> GetAllImage(string bookId)
+        public async Task<IEnumerable<ImageBook>> GetAllImage(Guid bookId)
         {
             var image = await _unit.Images.GetAll();
             var imageList= from i in image where i.Book_Id == bookId select i;

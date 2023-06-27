@@ -42,7 +42,7 @@ namespace BookStoreAPI.Controller
             return BadRequest("Book don't exists");
         }
         [HttpGet("getBookDetail")]
-        public async Task<IActionResult> GetBookDetail(string bookId)
+        public async Task<IActionResult> GetBookDetail(Guid bookId)
         {
             var respone = await _book.GetBookById(bookId);
             if (respone != null)
@@ -62,15 +62,15 @@ namespace BookStoreAPI.Controller
             }
             return BadRequest("Update Book Fail");
         }
-        [HttpDelete("deleteBook")]
-        public async Task<IActionResult> DeleteBook(string bookId)
+        [HttpPatch("deleteBook")]
+        public async Task<IActionResult> DeleteBook(Guid bookId)
         {
                 var result = await _book.DeleteBook(bookId);
                 if (result) return Ok("Delete Book Success");
                  return BadRequest("Delete Book Fail");
         }
-        [HttpDelete("restoreBook")]
-        public async Task<IActionResult> RestoreBook(string bookId)
+        [HttpPatch("restoreBook")]
+        public async Task<IActionResult> RestoreBook(Guid bookId)
         {
             var result = await _book.RestoreBook(bookId);
             if (result) return Ok("Restore Book Success");

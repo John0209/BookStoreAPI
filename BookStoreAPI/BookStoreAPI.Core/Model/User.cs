@@ -8,7 +8,7 @@ namespace BookStoreAPI.Core.Model
 {
     public class User
     {
-        public string User_Id { get; set; }
+        public Guid User_Id { get; set; }
         public int Role_Id { get; set; }
         public string User_Account { get; set; }
         public string User_Password { get; set; }

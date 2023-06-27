@@ -8,8 +8,8 @@ namespace BookStoreAPI.Core.Model
 {
     public class BookingRequest
     {
-        public string Request_Id { get; set; }
-        public string Book_Id { get; set; }
+        public Guid Request_Id { get; set; }
+        public Guid Book_Id { get; set; }
         public string Request_Image_Url { get; set; }
         public string Request_Book_Name { get; set; }
         public int Request_Quantity { get; set; }

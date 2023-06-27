@@ -24,32 +24,16 @@ namespace Service.Service
             if (order != null)
             {
                 var m_list = await GetAllOrder();
-                order.Order_Id = CreateId(m_list);
+                order.Order_Id = Guid.NewGuid();
+                order.Is_Order_Status = true;
                 await _unit.Order.Add(order);
                 var result = _unit.Save();
                 if (result > 0) return true;
             }
             return false;
         }
-        private string CreateId(IEnumerable<Order> m_list)
-        {
-            if (m_list.Count() < 1)
-            {
-                var id = "O1";
-                return id;
-            }
-            var m_id = m_list.LastOrDefault().Order_Id;
-            if (m_id != null)
-            {
-                var number = Int32.Parse(m_id.Substring(m_id.Length - 1));
-                number++;
-                var id = "O" + number;
-                return id;
-            }
-            return null;
-        }
 
-        public async Task<bool> DeleteOrder(string orderId)
+        public async Task<bool> DeleteOrder(Guid orderId)
         {
             var m_update = _unit.Order.SingleOrDefault(m_order, u => u.Order_Id == orderId);
             if (m_update != null)
@@ -72,7 +56,7 @@ namespace Service.Service
             return null;
         }
 
-        public Task<Book> GetOrderById(string orderId)
+        public Task<Book> GetOrderById(Guid orderId)
         {
             throw new NotImplementedException();
         }

@@ -27,32 +27,16 @@ namespace Service.Service
             if (book != null)
             {
                 var m_list = await GetAllBook();
-                book.Book_Id = CreateId(m_list);
+                book.Book_Id = Guid.NewGuid();
+                book.Is_Book_Status= true;
                 await _unit.Books.Add(book);
                 var result = _unit.Save();
                 if (result > 0) return true;
             }
             return false;
         }
-        private string CreateId(IEnumerable<Book> m_list)
-        {
-            if (m_list.Count() < 1)
-            {
-                var id = "B1";
-                return id;
-            }
-            var m_id = m_list.LastOrDefault().Book_Id;
-            if (m_id != null)
-            {
-                var number = Int32.Parse(m_id.Substring(m_id.Length - 1));
-                number++;
-                var id = "B" + number;
-                return id;
-            }
-            return null;
-        }
 
-        public async Task<bool> DeleteBook(string bookId)
+        public async Task<bool> DeleteBook(Guid bookId)
         {
             var m_update = _unit.Books.SingleOrDefault(m_book, u => u.Book_Id==bookId);
             if (m_update != null)
@@ -75,7 +59,7 @@ namespace Service.Service
             return null;
         }
 
-        public async Task<BookDetailDTO> GetBookById(string bookId)
+        public async Task<BookDetailDTO> GetBookById(Guid bookId)
         {
             var result=await _unit.Books.GetById(bookId);
             var listCate = await _cate.GetAll();
@@ -136,7 +120,7 @@ namespace Service.Service
             return false;
         }
 
-        public async Task<bool> RestoreBook(string bookId)
+        public async Task<bool> RestoreBook(Guid bookId)
         {
             var m_update = _unit.Books.SingleOrDefault(m_book, u => u.Book_Id == bookId);
             if (m_update != null)

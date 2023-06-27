@@ -24,8 +24,9 @@ namespace BookStoreAPI.Infracstructure.Migrations
 
             modelBuilder.Entity("BookStoreAPI.Core.Model.Book", b =>
                 {
-                    b.Property<string>("Book_Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Book_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Book_Author")
                         .IsRequired()
@@ -51,9 +52,8 @@ namespace BookStoreAPI.Infracstructure.Migrations
                     b.Property<int>("Book_Year_Public")
                         .HasColumnType("int");
 
-                    b.Property<string>("Category_Id")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Category_Id")
+                        .HasColumnType("int");
 
                     b.Property<bool>("Is_Book_Status")
                         .HasColumnType("bit");
@@ -67,11 +67,12 @@ namespace BookStoreAPI.Infracstructure.Migrations
 
             modelBuilder.Entity("BookStoreAPI.Core.Model.BookingRequest", b =>
                 {
-                    b.Property<string>("Request_Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Request_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Book_Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Book_Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Is_Request_Status")
                         .HasColumnType("int");
@@ -111,8 +112,11 @@ namespace BookStoreAPI.Infracstructure.Migrations
 
             modelBuilder.Entity("BookStoreAPI.Core.Model.Category", b =>
                 {
-                    b.Property<string>("Category_Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Category_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Category_Id"));
 
                     b.Property<string>("Category_Name")
                         .IsRequired()
@@ -134,9 +138,8 @@ namespace BookStoreAPI.Infracstructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Image_Id"));
 
-                    b.Property<string>("Book_Id")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Book_Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Image_Name")
                         .IsRequired()
@@ -155,8 +158,9 @@ namespace BookStoreAPI.Infracstructure.Migrations
 
             modelBuilder.Entity("BookStoreAPI.Core.Model.Importation", b =>
                 {
-                    b.Property<string>("Import_Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Import_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<float>("Import_Amount")
                         .HasColumnType("real");
@@ -170,9 +174,8 @@ namespace BookStoreAPI.Infracstructure.Migrations
                     b.Property<bool>("Is_Import_Status")
                         .HasColumnType("bit");
 
-                    b.Property<string>("User_Id")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("User_Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Import_Id");
 
@@ -183,12 +186,12 @@ namespace BookStoreAPI.Infracstructure.Migrations
 
             modelBuilder.Entity("BookStoreAPI.Core.Model.ImportationDetail", b =>
                 {
-                    b.Property<string>("Import_Detail_Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Import_Detail_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Book_Id")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Book_Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<float>("Import_Detail_Amount")
                         .HasColumnType("real");
@@ -199,9 +202,8 @@ namespace BookStoreAPI.Infracstructure.Migrations
                     b.Property<int>("Import_Detail_Quantity")
                         .HasColumnType("int");
 
-                    b.Property<string>("Import_Id")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Import_Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Import_Detail_Id");
 
@@ -214,12 +216,12 @@ namespace BookStoreAPI.Infracstructure.Migrations
 
             modelBuilder.Entity("BookStoreAPI.Core.Model.Inventory", b =>
                 {
-                    b.Property<string>("Inventory_Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Inventory_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Book_Id")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Book_Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("Inventory_Date_Into")
                         .HasColumnType("datetime2");
@@ -234,9 +236,8 @@ namespace BookStoreAPI.Infracstructure.Migrations
                     b.Property<bool>("Is_Inventory_Status")
                         .HasColumnType("bit");
 
-                    b.Property<string>("User_Id")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("User_Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Inventory_Id");
 
@@ -249,8 +250,9 @@ namespace BookStoreAPI.Infracstructure.Migrations
 
             modelBuilder.Entity("BookStoreAPI.Core.Model.Order", b =>
                 {
-                    b.Property<string>("Order_Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Order_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("Is_Order_Status")
                         .HasColumnType("bit");
@@ -276,9 +278,8 @@ namespace BookStoreAPI.Infracstructure.Migrations
                     b.Property<int>("Order_Quantity")
                         .HasColumnType("int");
 
-                    b.Property<string>("User_Id")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("User_Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Order_Id");
 
@@ -289,12 +290,12 @@ namespace BookStoreAPI.Infracstructure.Migrations
 
             modelBuilder.Entity("BookStoreAPI.Core.Model.OrderDetail", b =>
                 {
-                    b.Property<string>("Order_Detail_Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Order_Detail_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Book_Id")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Book_Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<float>("Order_Detail_Amount")
                         .HasColumnType("real");
@@ -305,9 +306,8 @@ namespace BookStoreAPI.Infracstructure.Migrations
                     b.Property<int>("Order_Detail_Quantity")
                         .HasColumnType("int");
 
-                    b.Property<string>("Order_Id")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Order_Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Order_Detail_Id");
 
@@ -337,11 +337,11 @@ namespace BookStoreAPI.Infracstructure.Migrations
 
             modelBuilder.Entity("BookStoreAPI.Core.Model.User", b =>
                 {
-                    b.Property<string>("User_Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("User_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Is_User_Gender")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Is_User_Status")
@@ -355,7 +355,6 @@ namespace BookStoreAPI.Infracstructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("User_Address")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("User_Email")
@@ -363,7 +362,6 @@ namespace BookStoreAPI.Infracstructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("User_Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("User_Password")
@@ -371,7 +369,6 @@ namespace BookStoreAPI.Infracstructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("User_Phone")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("User_Id");

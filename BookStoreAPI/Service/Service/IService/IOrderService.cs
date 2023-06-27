@@ -11,8 +11,8 @@ namespace Service.Service.IService
     {
         Task<bool> CreateOrder(Order order);
         Task<IEnumerable<Order>> GetAllOrder();
-        Task<Book> GetOrderById(string orderId);
+        Task<Book> GetOrderById(Guid orderId);
         Task<bool> UpdateOrder(Order order);
-        Task<bool> DeleteOrder(string orderId);
+        Task<bool> DeleteOrder(Guid orderId);
     }
 }

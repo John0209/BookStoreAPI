@@ -74,6 +74,10 @@ public class DbContextClass : DbContext
             entity.HasOne(y => y.Role).WithMany(y => y.Users).HasForeignKey(y=>y.Role_Id).IsRequired(true);
             entity.Property(y => y.User_Account).IsRequired(true);
             entity.Property(y=> y.User_Password).IsRequired(true);
+            entity.Property(y => y.User_Phone).IsRequired(false);
+            entity.Property(y => y.Is_User_Gender).IsRequired(false);
+            entity.Property(y => y.User_Address).IsRequired(false);
+            entity.Property(y => y.User_Name).IsRequired(false);
         });
         modelBuilder.Entity<Book>(entity =>
         {

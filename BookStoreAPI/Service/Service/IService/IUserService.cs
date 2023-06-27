@@ -13,10 +13,10 @@ namespace Service.Service.IService
         Task<bool> CreateUser(User user);
         Task<User> CheckLogin(LoginDTO login);
         Task<IEnumerable<User>> GetAllUser();
-        Task<User> GetUserById(string userId);
+        Task<User> GetUserById(Guid userId);
         Task<IEnumerable<User>> GetUserByName(string name);
         Task<bool> UpdateUser(User user);
-        Task<bool> DeleteUser(string userId);
-        Task<bool> RestoreUser(string userId);
+        Task<bool> DeleteUser(Guid userId);
+        Task<bool> RestoreUser(Guid userId);
     }
 }

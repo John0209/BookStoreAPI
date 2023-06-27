@@ -15,6 +15,7 @@ namespace Service.Service.IService
         Task<IEnumerable<Inventory>> GetInventory();
         Task<List<DisplayInventoryDTO>> SearchInventory(string bookName);
         Task<bool> UpdateInventory(Inventory inventory);
-        Task<bool> DeleteInventory(string inventoryId);
+        Task<bool> DeleteInventory(Guid inventoryId);
+        Task<bool> RestoreInventory(Guid inventoryId);
     }
 }

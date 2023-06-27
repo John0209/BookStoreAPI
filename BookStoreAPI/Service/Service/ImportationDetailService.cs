@@ -27,31 +27,13 @@ namespace Service.Service
             if (importDetail != null)
             {
                 var m_list = await GetAllImportDetail();
-                importDetail.Import_Detail_Id = CreateId(m_list);
+                importDetail.Import_Detail_Id = Guid.NewGuid();
                 await _unit.ImportationDetail.Add(importDetail);
                 var result = _unit.Save();
                 if (result > 0) return true;
             }
             return false;
         }
-        private string CreateId(IEnumerable<ImportationDetail> m_list)
-        {
-            if (m_list.Count() < 1)
-            {
-                var id = "IMD1";
-                return id;
-            }
-            var m_id = m_list.LastOrDefault().Import_Detail_Id;
-            if (m_id != null)
-            {
-                var number = Int32.Parse(m_id.Substring(m_id.Length - 1));
-                number++;
-                var id = "IMD" + number;
-                return id;
-            }
-            return null;
-        }
-
         public async Task<IEnumerable<ImportationDetail>> GetAllImportDetail()
         {
             var result = await _unit.ImportationDetail.GetAll();
@@ -90,13 +72,13 @@ namespace Service.Service
             return display;
         }
 
-        private string GetUrl(string book_Id, IEnumerable<ImageBook> image)
+        private string GetUrl(Guid book_Id, IEnumerable<ImageBook> image)
         {
             var url = (from b in image where b.Book_Id == book_Id select b.Image_URL).FirstOrDefault();
             return url;
         }
 
-        private string GetTitle(string book_Id, IEnumerable<Book> bookList)
+        private string GetTitle(Guid book_Id, IEnumerable<Book> bookList)
         {
             var title= (from b in bookList where b.Book_Id== book_Id select b.Book_Title).FirstOrDefault();
             return title;
@@ -122,7 +104,7 @@ namespace Service.Service
             throw new NotImplementedException();
         }
 
-        public async Task<bool> UpdateStatusRequest(string RequestId)
+        public async Task<bool> UpdateStatusRequest(Guid RequestId)
         {
             var request= await _unit.Request.GetById(RequestId);
             if(request != null)

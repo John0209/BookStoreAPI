@@ -8,8 +8,8 @@ namespace BookStoreAPI.Core.DTO
 {
     public class BookDetailDTO
     {
-        public string Book_Id { get; set; }
-        public string Category_Id { get; set; }
+        public Guid Book_Id { get; set; }
+        public int Category_Id { get; set; }
         public string Category_Name { get; set; }
         public string Book_Title { get; set; }
         public string Book_Author { get; set; }

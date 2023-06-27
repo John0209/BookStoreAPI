@@ -10,7 +10,7 @@ namespace Service.Service.IService
     public interface IImageService
     {
         Task<bool> CreateImage(ImageBook image);
-        Task<IEnumerable<ImageBook>> GetAllImage(string bookId);
+        Task<IEnumerable<ImageBook>> GetAllImage(Guid bookId);
         Task<Book> GetImageById(string imageId);
         Task<bool> UpdateImage(ImageBook image);
         Task<bool> DeleteImage(string imageId);

@@ -12,10 +12,10 @@ namespace Service.Service.IService
     {
         Task<bool> CreateBook(Book book);
         Task<IEnumerable<Book>> GetAllBook();
-        Task<BookDetailDTO> GetBookById(string bookId);
+        Task<BookDetailDTO> GetBookById(Guid bookId);
         Task<IEnumerable<Book>> GetBookByName(string bookName);
         Task<bool> UpdateBook(Book book);
-        Task<bool> DeleteBook(string bookId);
-        Task<bool> RestoreBook(string bookId);
+        Task<bool> DeleteBook(Guid bookId);
+        Task<bool> RestoreBook(Guid bookId);
     }
 }

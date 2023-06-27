@@ -11,7 +11,7 @@ namespace Service.Service.IService
     {
         Task<bool> CreateCategory(Category category);
         Task<IEnumerable<Category>> GetAllCategory();
-        Task<Category> GetCategoryById(string categoryId);
+        Task<Category> GetCategoryById(int categoryId);
         Task<bool> UpdateCategory(Category category);
         Task<bool> DeleteCategory(string categoryId);
     }

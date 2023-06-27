@@ -8,8 +8,8 @@ namespace BookStoreAPI.Core.Model
 {
     public class Order
     {
-        public string Order_Id { get; set; }
-        public string User_Id { get; set; }
+        public Guid Order_Id { get; set; }
+        public Guid User_Id { get; set; }
         public DateTime Order_Date { get; set; }
         public int Order_Quantity { get; set; }
         public float Order_Amount { get; set; }
