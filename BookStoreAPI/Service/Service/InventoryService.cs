@@ -30,7 +30,7 @@ namespace Service.Service
         {
             if (inventory != null)
             {
-                var m_list= await GetInventory();
+                //var m_list= await GetInventory();
                 inventory.Inventory_Id = Guid.NewGuid();
                 inventory.Is_Inventory_Status = true;
                 await _unit.Inventory.Add(inventory);

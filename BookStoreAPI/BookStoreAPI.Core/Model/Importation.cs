@@ -14,7 +14,6 @@ namespace BookStoreAPI.Core.Model
         public int Import_Quantity { get; set; }
         public float Import_Amount { get; set; }
         public bool Is_Import_Status { get; set; }
-
         public User User { get; set; }
         public ICollection<ImportationDetail> ImportationDetails { get; set; }
     }

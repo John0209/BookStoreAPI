@@ -28,12 +28,25 @@ namespace Service.Service
             {
                 var m_list = await GetAllImportDetail();
                 importDetail.Import_Detail_Id = Guid.NewGuid();
+                await UpdateQuantityBook(importDetail.Book_Id, importDetail.Import_Detail_Quantity);
                 await _unit.ImportationDetail.Add(importDetail);
                 var result = _unit.Save();
                 if (result > 0) return true;
             }
             return false;
         }
+
+        private async Task UpdateQuantityBook(Guid book_Id, int import_Detail_Quantity)
+        {
+            var book=await _unit.Books.GetById(book_Id);
+            if(book != null)
+            {
+                book.Book_Quantity += import_Detail_Quantity;
+                _unit.Books.Update(book);
+                _unit.Save();
+            }
+        }
+
         public async Task<IEnumerable<ImportationDetail>> GetAllImportDetail()
         {
             var result = await _unit.ImportationDetail.GetAll();

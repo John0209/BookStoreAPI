@@ -45,8 +45,15 @@ namespace BookStoreAPI.Controller
         public async Task<IActionResult> DeleteImportation(Guid importId)
         {
             var result = await _import.DeleteImport(importId);
-            if (result) return Ok("Delete User Success");
-            return BadRequest("Delete User Fail");
+            if (result) return Ok("Delete Importation Success");
+            return BadRequest("Delete Importation Fail");
+        }
+        [HttpPatch("restoreImporatation")]
+        public async Task<IActionResult> RestoreImportation(Guid importId)
+        {
+            var result = await _import.RestoreImport(importId);
+            if (result) return Ok("Restore Importation Success");
+            return BadRequest("Restore Importation Fail");
         }
         [HttpPut("updateImportation")]
         public async Task<IActionResult> UpdateImportation(ImportationDTO dto)

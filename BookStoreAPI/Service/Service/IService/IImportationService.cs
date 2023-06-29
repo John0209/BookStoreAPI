@@ -16,5 +16,6 @@ namespace Service.Service.IService
         Task<Book> GetImportById(Guid importId);
         Task<bool> UpdateImport(Importation import);
         Task<bool> DeleteImport(Guid importId);
+        Task<bool> RestoreImport(Guid importId);
     }
 }

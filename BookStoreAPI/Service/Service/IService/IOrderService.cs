@@ -14,5 +14,6 @@ namespace Service.Service.IService
         Task<Book> GetOrderById(Guid orderId);
         Task<bool> UpdateOrder(Order order);
         Task<bool> DeleteOrder(Guid orderId);
+        Task<bool> RestoreOrder(Guid orderId);
     }
 }

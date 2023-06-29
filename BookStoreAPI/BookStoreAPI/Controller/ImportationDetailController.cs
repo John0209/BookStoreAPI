@@ -46,7 +46,7 @@ namespace BookStoreAPI.Controller
             if (dto != null)
             {
                 //update status request done
-           if( await _import.UpdateStatusRequest(dto.Request_Id)) { 
+            if( await _import.UpdateStatusRequest(dto.Request_Id)) { 
                     var import = _map.Map<ImportationDetail>(dto);
                     var result = await _import.CreateImportDetail(import);
                     if (result) return Ok("Add Import Detail Success");

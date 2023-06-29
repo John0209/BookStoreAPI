@@ -16,7 +16,7 @@ namespace BookStoreAPI.Core.Model
         public string Order_Customer_Name { get; set; }
         public string Order_Customer_Address { get; set; }
         public string Order_Customer_Phone { get; set; }
-        public bool Is_Order_Status { get; set; }
+        public int Is_Order_Status { get; set; }
         public User User { get; set; }
         public ICollection<OrderDetail> OrderDetails { get; set; }
     }

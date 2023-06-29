@@ -24,14 +24,27 @@ namespace Service.Service
         {
             if (order != null)
             {
-                var m_list = await GetAllOrderDetail();
+               // var m_list = await GetAllOrderDetail();
                 order.Order_Detail_Id = Guid.NewGuid();
+                await UpdateBookQuantity(order.Book_Id, order.Order_Detail_Quantity);
                 await _unit.OrderDetail.Add(order);
                 var result = _unit.Save();
                 if (result > 0) return true;
             }
             return false;
         }
+
+        private async Task UpdateBookQuantity(Guid book_Id, int order_Detail_Quantity)
+        {
+            var book = await _unit.Books.GetById(book_Id);
+            if (book != null)
+            {
+                book.Book_Quantity -= order_Detail_Quantity;
+                _unit.Books.Update(book);
+                _unit.Save();
+            }
+        }
+
         public async Task<IEnumerable<OrderDetail>> GetAllOrderDetail()
         {
             var result = await _unit.OrderDetail.GetAll();

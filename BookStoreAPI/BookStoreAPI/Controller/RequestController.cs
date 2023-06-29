@@ -12,6 +12,8 @@ namespace BookStoreAPI.Controller
     [ApiController]
     public class RequestController : ControllerBase
     {
+        //Cộng quantity khi import thành công, status order, order trừ quantity book
+
         IRequestService _request;
         IMapper _map;
         public RequestController(IRequestService request, IMapper mapper)

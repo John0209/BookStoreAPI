@@ -49,6 +49,13 @@ namespace BookStoreAPI.Controller
             if (result) return Ok("Delete Order Success");
             return BadRequest("Delete Order Fail");
         }
+        [HttpPatch("restoreOrder")]
+        public async Task<IActionResult> RestoreOrder(Guid orderId)
+        {
+            var result = await _order.RestoreOrder(orderId);
+            if (result) return Ok("Restore Order Success");
+            return BadRequest("Restore Order Fail");
+        }
         [HttpPut("updateOrder")]
         public async Task<IActionResult> UpdateOrder(OrderDTO dto)
         {

@@ -26,9 +26,18 @@ namespace BookStoreAPI.Controller
                 var respone= await _book.GetAllBook();
                 if(respone != null)
                 {
-                var book=_mapper.Map<IEnumerable<BookDetailDTO>>(respone);
-                    return Ok(book);
+                    return Ok(respone);
                 }
+            return BadRequest("null");
+        }
+        [HttpGet("getBookByCategory")]
+        public async Task<IActionResult> GetAllBookByCategory(int categoryId)
+        {
+            var respone = await _book.GetBookByCategory(categoryId);
+            if (respone != null)
+            {
+                return Ok(respone);
+            }
             return BadRequest("null");
         }
         [HttpGet("searchBook")]
@@ -77,12 +86,12 @@ namespace BookStoreAPI.Controller
             return BadRequest("Restore Book Fail");
         }
         [HttpPost("createBook")]
-        public async Task<IActionResult> CreateBook(BookDetailDTO dTO)
+        public async Task<IActionResult> CreateBook(BookDTO dTO)
         {
             if (dTO != null)
             {
                 var book = _mapper.Map<Book>(dTO);
-                var result = await _book.CreateBook(book);
+                var result = await _book.CreateBook(book,dTO.Image_URL);
                 if (result) return Ok("Create Book Success");
             }
             return BadRequest("Create Book Fail");

@@ -74,6 +74,9 @@ namespace BookStoreAPI.Infracstructure.Migrations
                     b.Property<Guid>("Book_Id")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<bool>("Is_RequestBook_Status")
+                        .HasColumnType("bit");
+
                     b.Property<int>("Is_Request_Status")
                         .HasColumnType("int");
 
@@ -140,10 +143,6 @@ namespace BookStoreAPI.Infracstructure.Migrations
 
                     b.Property<Guid>("Book_Id")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Image_Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image_URL")
                         .IsRequired()
@@ -254,8 +253,8 @@ namespace BookStoreAPI.Infracstructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<bool>("Is_Order_Status")
-                        .HasColumnType("bit");
+                    b.Property<int>("Is_Order_Status")
+                        .HasColumnType("int");
 
                     b.Property<float>("Order_Amount")
                         .HasColumnType("real");

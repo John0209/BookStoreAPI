@@ -16,6 +16,6 @@ namespace BookStoreAPI.Core.DTO
         public DateTime Order_Date { get; set; }
         public int Order_Quantity { get; set; }
         public float Order_Amount { get; set; }
-        public bool Is_Order_Status { get; set; }
+        public int Is_Order_Status { get; set; }
     }
 }

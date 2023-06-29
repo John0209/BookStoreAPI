@@ -8,6 +8,7 @@ namespace BookStoreAPI.Core.DiplayDTO
 {
     public class DisplayImportationDTO
     {
+        public Guid Import_Id { get; set; }
         public string User_Name { get; set; }
         public int Import_Quantity { get; set; }
         public float Import_Amount { get; set; }

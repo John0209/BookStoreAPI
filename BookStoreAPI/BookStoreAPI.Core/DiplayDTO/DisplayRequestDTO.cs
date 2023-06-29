@@ -13,6 +13,6 @@ namespace BookStoreAPI.Core.DiplayDTO
         public int Request_Quantity { get; set; }
         public float Request_Price { get; set; }
         public string Request_Note { get; set; }
-
+        public bool Is_RequestBook_Status { get; set; }
     }
 }

@@ -62,6 +62,7 @@ namespace Service.Service
                 m_update.Request_Date_Done = DateTime.Now;
                 m_update.Request_Note = request.Request_Note;
                 m_update.Is_Request_Status = 1;
+                m_update.Is_RequestBook_Status=request.Is_RequestBook_Status;
                 _unit.Request.Update(m_update);
                 var result = _unit.Save();
                 if (result > 0) return true;

@@ -24,7 +24,7 @@ namespace Service.Service
         {
             if (import != null)
             {
-                var m_list = await GetAllImport();
+                //var m_list = await GetAllImport();
                 import.Import_Id = Guid.NewGuid();
                 import.Is_Import_Status = true;
                 await _unit.Importation.Add(import);
@@ -65,6 +65,7 @@ namespace Service.Service
             foreach (var item in importList)
             {
                 var import = new DisplayImportationDTO();
+                import.Import_Id = item.Import_Id;
                 import.Import_Quantity = item.Import_Quantity;
                 import.Import_Amount=item.Import_Amount;
                 import.Import_Date_Done = item.Import_Date_Done;
@@ -101,6 +102,17 @@ namespace Service.Service
             return false;
         }
 
-        
+        public async Task<bool> RestoreImport(Guid importId)
+        {
+            var m_update = _unit.Importation.SingleOrDefault(m_import, u => u.Import_Id == importId);
+            if (m_update != null)
+            {
+                m_update.Is_Import_Status = true;
+                _unit.Importation.Update(m_update);
+                var result = _unit.Save();
+                if (result > 0) return true;
+            }
+            return false;
+        }
     }
 }

@@ -36,7 +36,7 @@ namespace Service.Service
         {
             if (user != null)
             {
-                var m_list = await GetAllUser();
+                //var m_list = await GetAllUser();
                 user.User_Id = Guid.NewGuid();
                 user.Role_Id = 3;
                 user.Is_User_Status= true;

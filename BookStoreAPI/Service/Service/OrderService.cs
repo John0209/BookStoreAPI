@@ -23,9 +23,9 @@ namespace Service.Service
         {
             if (order != null)
             {
-                var m_list = await GetAllOrder();
+                //var m_list = await GetAllOrder();
                 order.Order_Id = Guid.NewGuid();
-                order.Is_Order_Status = true;
+                order.Is_Order_Status = 1;
                 await _unit.Order.Add(order);
                 var result = _unit.Save();
                 if (result > 0) return true;
@@ -38,7 +38,7 @@ namespace Service.Service
             var m_update = _unit.Order.SingleOrDefault(m_order, u => u.Order_Id == orderId);
             if (m_update != null)
             {
-                m_update.Is_Order_Status = false;
+                m_update.Is_Order_Status = 0;
                 _unit.Order.Update(m_update);
                 var result = _unit.Save();
                 if (result > 0) return true;
@@ -68,6 +68,19 @@ namespace Service.Service
             {
                 m_update.Order_Quantity = order.Order_Quantity;
                 m_update.Order_Amount = order.Order_Amount;
+                _unit.Order.Update(m_update);
+                var result = _unit.Save();
+                if (result > 0) return true;
+            }
+            return false;
+        }
+
+        public async Task<bool> RestoreOrder(Guid orderId)
+        {
+            var m_update = _unit.Order.SingleOrDefault(m_order, u => u.Order_Id == orderId);
+            if (m_update != null)
+            {
+                m_update.Is_Order_Status = 2;
                 _unit.Order.Update(m_update);
                 var result = _unit.Save();
                 if (result > 0) return true;
