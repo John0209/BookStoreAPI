@@ -56,11 +56,7 @@ namespace Service.Service
             return null;
         }
 
-        public Task<Book> GetOrderById(Guid orderId)
-        {
-            throw new NotImplementedException();
-        }
-
+      
         public async Task<bool> UpdateOrder(Order order)
         {
             var m_update = _unit.Order.SingleOrDefault(m_order, u => u.Order_Id==order.Order_Id);
@@ -82,6 +78,37 @@ namespace Service.Service
             {
                 m_update.Is_Order_Status = 2;
                 _unit.Order.Update(m_update);
+                var result = _unit.Save();
+                if (result > 0) return true;
+            }
+            return false;
+        }
+
+        public async Task<IEnumerable<Order>> GetOrderByUserId(Guid userId)
+        {
+            var listOrder = await GetAllOrder();
+            var order = from b in listOrder where b.User_Id == userId select b;
+            if (order != null)
+            return order;
+            return null;
+        }
+
+        public async Task<bool> RemoveOrder(Guid orderId)
+        {
+            var import = await _unit.Order.GetById(orderId);
+            var importDetailList = await _unit.OrderDetail.GetAll();
+            var listDetail = from i in importDetailList where i.Order_Id == orderId select i;
+            if (import != null)
+            {
+                if (listDetail.Count() > 0)
+                {
+                    foreach (var i in listDetail)
+                    {
+                        _unit.OrderDetail.Delete(i);
+                        _unit.Save();
+                    }
+                }
+                _unit.Order.Delete(import);
                 var result = _unit.Save();
                 if (result > 0) return true;
             }

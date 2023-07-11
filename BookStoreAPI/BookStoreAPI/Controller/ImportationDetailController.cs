@@ -40,6 +40,16 @@ namespace BookStoreAPI.Controller
             }
             return BadRequest("importation detail don't exists");
         }
+        [HttpGet("getByImportId")]
+        public async Task<IActionResult> GetByImportId(Guid import_Id)
+        {
+            var respone = await _import.GetImportDetailByImportId(import_Id);
+            if (respone != null)
+            {
+                return Ok(respone);
+            }
+            return BadRequest("importation detail don't exists");
+        }
         [HttpPost("createImportationDetail")]
         public async Task<IActionResult> CreateImportationDetail(ImportationDetailDTO dto)
         {

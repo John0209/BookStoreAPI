@@ -1,4 +1,5 @@
-﻿using BookStoreAPI.Core.DiplayDTO;
+﻿using Azure.Core;
+using BookStoreAPI.Core.DiplayDTO;
 using BookStoreAPI.Core.Interface;
 using BookStoreAPI.Core.Model;
 using Service.Service.IService;
@@ -105,7 +106,8 @@ namespace Service.Service
         public async Task<List<DisplayInventoryDTO>> SearchInventory(string bookName)
         {
             var books = await _unit.Books.GetAll();
-            var inventories = await GetInventory();
+            var inventoryListAll = await GetInventory();
+            var inventories= from i in inventoryListAll where i.Is_Inventory_Status == true select i;
             // lấy nhựng book có name cẩn search
             var bookIdList = from b in books where (b.Book_Title.ToLower().Trim().Contains(bookName.ToLower().Trim())) select b;
             // lấy inventory có chứa những book có id cần search
@@ -139,6 +141,18 @@ namespace Service.Service
             {
                 m_update.Is_Inventory_Status = true;
                 _unit.Inventory.Update(m_update);
+                var result = _unit.Save();
+                if (result > 0) return true;
+            }
+            return false;
+        }
+
+        public async Task<bool> RemoveInventory(Guid inventoryId)
+        {
+            var user = await _unit.Inventory.GetById(inventoryId);
+            if (user != null)
+            {
+                _unit.Inventory.Delete(user);
                 var result = _unit.Save();
                 if (result > 0) return true;
             }

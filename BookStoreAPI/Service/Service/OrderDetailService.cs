@@ -113,5 +113,16 @@ namespace Service.Service
         {
             throw new NotImplementedException();
         }
+
+        public async Task<IEnumerable<DisplayOrderDetailDTO>> GetOrderDetailByOrderId(Guid order_id)
+        {
+            var listOrderDetail = await GetAllOrderDetail();
+            var oderDetail = from i in listOrderDetail where i.Order_Id== order_id select i;
+            var display = new List<DisplayOrderDetailDTO>();
+            // get filed để display
+            display = await GetDisplay(display, oderDetail);
+            if (display.Count < 1) return null;
+            return display;
+        }
     }
 }

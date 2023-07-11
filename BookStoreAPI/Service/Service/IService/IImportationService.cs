@@ -17,5 +17,6 @@ namespace Service.Service.IService
         Task<bool> UpdateImport(Importation import);
         Task<bool> DeleteImport(Guid importId);
         Task<bool> RestoreImport(Guid importId);
+        Task<bool> RemoveImport(Guid importId);
     }
 }

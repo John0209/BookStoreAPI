@@ -40,6 +40,16 @@ namespace BookStoreAPI.Controller
             }
             return BadRequest("order detail don't exists");
         }
+        [HttpGet("getByOrderId")]
+        public async Task<IActionResult> GetByOrderId(Guid Order_id)
+        {
+            var respone = await _order.GetOrderDetailByOrderId(Order_id);
+            if (respone != null)
+            {
+                return Ok(respone);
+            }
+            return BadRequest("order detail don't exists");
+        }
         [HttpPost("createOrderDetail")]
         public async Task<IActionResult> CreateOrderDetail(OrderDetailDTO dto)
         {

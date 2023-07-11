@@ -85,13 +85,20 @@ namespace BookStoreAPI.Controller
             if (result) return Ok("Restore Book Success");
             return BadRequest("Restore Book Fail");
         }
+        [HttpDelete("removeBook")]
+        public async Task<IActionResult> RemoveBook(Guid bookId)
+        {
+            var result = await _book.RemoveBook(bookId);
+            if (result) return Ok("remove Book Success");
+            return BadRequest("remove Book Fail");
+        }
         [HttpPost("createBook")]
         public async Task<IActionResult> CreateBook(BookDTO dTO)
         {
             if (dTO != null)
             {
                 var book = _mapper.Map<Book>(dTO);
-                var result = await _book.CreateBook(book,dTO.Image_URL);
+                var result = await _book.CreateBook(book,dTO.Image_URL,dTO.Request_Id);
                 if (result) return Ok("Create Book Success");
             }
             return BadRequest("Create Book Fail");

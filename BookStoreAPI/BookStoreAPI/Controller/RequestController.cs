@@ -42,13 +42,24 @@ namespace BookStoreAPI.Controller
             }
             return BadRequest("null");
         }
-        [HttpPost("createRequest")]
-        public async Task<IActionResult> CreateRequest(RequestDTO dto)
+        [HttpPost("createRequestBookNew")]
+        public async Task<IActionResult> CreateRequestNew(RequestDTO dto)
         {
             if (dto != null)
             {
                 var request=_map.Map<BookingRequest>(dto);
-                var result = await _request.CreateRequest(request);
+                var result = await _request.CreateRequest(request,true);
+                if (result) return Ok("Add Request Success");
+            }
+            return BadRequest("Add Request Fail");
+        }
+        [HttpPost("createRequestBookOld")]
+        public async Task<IActionResult> CreateRequestOld(RequestDTO dto)
+        {
+            if (dto != null)
+            {
+                var request = _map.Map<BookingRequest>(dto);
+                var result = await _request.CreateRequest(request, false);
                 if (result) return Ok("Add Request Success");
             }
             return BadRequest("Add Request Fail");
@@ -66,6 +77,13 @@ namespace BookStoreAPI.Controller
             var result = await _request.RestoreRequest(requestId);
             if (result) return Ok("Restore Request Success");
             return BadRequest("Restore Request Fail");
+        }
+        [HttpDelete("removeRequest")]
+        public async Task<IActionResult> RemoveRequest(Guid requestId)
+        {
+            var result = await _request.RemoveRequest(requestId);
+            if (result) return Ok("Remove Request Success");
+            return BadRequest("Remove Request Fail");
         }
     }
 }

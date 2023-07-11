@@ -46,6 +46,11 @@ namespace BookStoreAPI.Infracstructure.Repositories
         {
             _dbContext.Set<T>().Update(entity);
         }
+        public void Delete(T entity)
+        {
+            _dbContext.Set<T>().Remove(entity);
+        }
+
         public T SingleOrDefault(T entity, Func<T, bool> function)
         {
             return _dbContext.Set<T>().SingleOrDefault(function);

@@ -64,14 +64,25 @@ namespace BookStoreAPI.Controller
             }
             return BadRequest(userName+" don't exists");
         }
-        [HttpPost("createUser")]
-        public async Task<IActionResult> CreateUser(CreateUserDTO userDTO)
+        [HttpPost("createUserMoble")]
+        public async Task<IActionResult> CreateUserMobel(CreateUserDTO userDTO)
         {
             if(userDTO != null)
             {
                 var user= _mapper.Map<User>(userDTO);
-                var result= await _user.CreateUser(user);
+                var result= await _user.CreateUserMoble(user);
                 if(result) return Ok("Create User Success");
+            }
+            return BadRequest("Create User Fail");
+        }
+        [HttpPost("createUserFE")]
+        public async Task<IActionResult> CreateUserFE(UserDTO userDTO)
+        {
+            if (userDTO != null)
+            {
+                var user = _mapper.Map<User>(userDTO);
+                var result = await _user.CreateUserFE(user);
+                if (result) return Ok("Create User Success");
             }
             return BadRequest("Create User Fail");
         }
@@ -92,6 +103,13 @@ namespace BookStoreAPI.Controller
                 var result = await _user.DeleteUser(userId);
                 if (result) return Ok("Delete User Success");
                 return BadRequest("Delete User Fail");
+        }
+        [HttpDelete("removeUser")]
+        public async Task<IActionResult> RemoveUser(Guid userId)
+        {
+            var result = await _user.RemoveUser(userId);
+            if (result) return Ok("Remove User Success");
+            return BadRequest("Remove User Fail");
         }
         [HttpPatch("restoreUser")]
         public async Task<IActionResult> RestoreUser(Guid userId)

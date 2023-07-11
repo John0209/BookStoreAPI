@@ -114,5 +114,27 @@ namespace Service.Service
             }
             return false;
         }
+
+        public async Task<bool> RemoveImport(Guid importId)
+        {
+            var import= await _unit.Importation.GetById(importId);
+            var importDetailList= await _unit.ImportationDetail.GetAll();
+            var listDetail= from i in importDetailList where i.Import_Id== importId select i;
+            if (import != null)
+            {
+                if (listDetail.Count() > 0)
+                {
+                    foreach(var i in listDetail)
+                    {
+                        _unit.ImportationDetail.Delete(i);
+                        _unit.Save();
+                    }
+                }
+                _unit.Importation.Delete(import);
+                var result = _unit.Save();
+                if (result > 0) return true;
+            }
+            return false;
+        }
     }
 }

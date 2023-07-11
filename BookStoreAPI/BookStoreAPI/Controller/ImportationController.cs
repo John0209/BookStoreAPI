@@ -53,7 +53,16 @@ namespace BookStoreAPI.Controller
         {
             var result = await _import.RestoreImport(importId);
             if (result) return Ok("Restore Importation Success");
-            return BadRequest("Restore Importation Fail");
+            return BadRequest("Restore" +
+                " Importation Fail");
+        }
+        [HttpDelete("removeImporatation")]
+        public async Task<IActionResult> RemoveImportation(Guid importId)
+        {
+            var result = await _import.RemoveImport(importId);
+            if (result) return Ok("Remove Importation Success");
+            return BadRequest("Remove" +
+                " Importation Fail");
         }
         [HttpPut("updateImportation")]
         public async Task<IActionResult> UpdateImportation(ImportationDTO dto)

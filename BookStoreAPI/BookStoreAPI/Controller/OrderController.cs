@@ -31,6 +31,17 @@ namespace BookStoreAPI.Controller
             }
             return BadRequest("order don't exists");
         }
+        [HttpGet("getOrderByUserId")]
+        public async Task<IActionResult> GetOrderByUserId(Guid UserId)
+        {
+            var respone = await _order.GetOrderByUserId(UserId);
+            if (respone != null)
+            {
+                var result = _map.Map<IEnumerable<OrderDTO>>(respone);
+                return Ok(result);
+            }
+            return BadRequest("order don't exists");
+        }
         [HttpPost("createOrder")]
         public async Task<IActionResult> CreateOrder(OrderDTO dto)
         {
@@ -55,6 +66,13 @@ namespace BookStoreAPI.Controller
             var result = await _order.RestoreOrder(orderId);
             if (result) return Ok("Restore Order Success");
             return BadRequest("Restore Order Fail");
+        }
+        [HttpDelete("removeOrder")]
+        public async Task<IActionResult> RemoveOrder(Guid orderId)
+        {
+            var result = await _order.RemoveOrder(orderId);
+            if (result) return Ok("Remove Order Success");
+            return BadRequest("Remove Order Fail");
         }
         [HttpPut("updateOrder")]
         public async Task<IActionResult> UpdateOrder(OrderDTO dto)

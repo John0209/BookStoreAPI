@@ -74,6 +74,7 @@ namespace Service.Service
             foreach (var item in importList)
             {
                 var import = new DiplayImportationDetailDTO();
+                import.Import_Detail_Id = item.Import_Detail_Id;
                 import.Import_Id = item.Import_Id;
                 import.Import_Detail_Quantity = item.Import_Detail_Quantity;
                 import.Import_Detail_Price = item.Import_Detail_Price;
@@ -100,7 +101,13 @@ namespace Service.Service
         public async Task<List<DiplayImportationDetailDTO>> SearchImport(string bookName)
         {
             var books = await _unit.Books.GetAll();
-            var importations = await GetAllImportDetail();
+            var listAllImportDetail = await GetAllImportDetail();
+            var listAllImport= await _unit.Importation.GetAll();
+            //get all import when imporst status ==true
+            var importations = (from d in listAllImportDetail
+                                join i in listAllImport on d.Import_Id equals i.Import_Id
+                                where i.Is_Import_Status == true
+                                select d);
             // lấy nhựng book có name cẩn search
             var bookIdList = from b in books where (b.Book_Title.ToLower().Trim().Contains(bookName.ToLower().Trim())) select b;
             // lấy inventory có chứa những book có id cần search
@@ -128,6 +135,17 @@ namespace Service.Service
                 if (result > 0) return true;
             }
             return false;
+        }
+
+        public async Task<IEnumerable<DiplayImportationDetailDTO>> GetImportDetailByImportId(Guid Import_Id)
+        {
+            var listImportDetail = await GetAllImportDetail();
+            var importDetail = from i in listImportDetail where i.Import_Id == Import_Id select i;
+            var display = new List<DiplayImportationDetailDTO>();
+            // get filed để display
+            display = await GetDisplay(display, importDetail);
+            if (display.Count < 1) return null;
+            return display;
         }
     }
 }

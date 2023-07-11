@@ -40,5 +40,16 @@ namespace BookStoreAPI.Controller
             }
             return BadRequest("Add Image Fail");
         }
+        [HttpPut("updateImage")]
+        public async Task<IActionResult> UpdateImage(ImageDTO imageDTO)
+        {
+            if (imageDTO != null)
+            {
+                var image= _map.Map<ImageBook>(imageDTO);
+                var result = await _image.UpdateImage(image);
+                if (result) return Ok("Update Image Success");
+            }
+            return BadRequest("Update Image Fail");
+        }
     }
 }

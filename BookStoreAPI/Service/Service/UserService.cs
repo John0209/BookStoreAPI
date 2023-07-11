@@ -31,8 +31,8 @@ namespace Service.Service
             }
             return null;
         }
-
-        public async Task<bool> CreateUser(User user)
+        
+        public async Task<bool> CreateUserMoble(User user)
         {
             if (user != null)
             {
@@ -40,13 +40,30 @@ namespace Service.Service
                 user.User_Id = Guid.NewGuid();
                 user.Role_Id = 3;
                 user.Is_User_Status= true;
+                user.User_Phone = "No Data";
+                user.User_Address = "No Data";
+                user.User_Name= "No Data";
+                user.Is_User_Gender = "No Data";
                 await _unit.User.Add(user);
                 var result=_unit.Save();
                 if(result >0)return true;
             }
             return false;
         }
-       
+        public async Task<bool> CreateUserFE(User user)
+        {
+            if (user != null)
+            {
+                //var m_list = await GetAllUser();
+                user.User_Id = Guid.NewGuid();
+                user.Role_Id = 3;
+                user.Is_User_Status = true;
+                await _unit.User.Add(user);
+                var result = _unit.Save();
+                if (result > 0) return true;
+            }
+            return false;
+        }
         public async Task<bool> DeleteUser(Guid userId)
         {
             var m_update = _unit.User.SingleOrDefault(m_user, u => u.User_Id == userId);
@@ -80,7 +97,7 @@ namespace Service.Service
         public async Task<IEnumerable<User>> GetUserByName(string name)
         {
             var users = await GetAllUser();
-            var result = from b in users where (b.User_Name.ToLower().Trim().Contains(name.ToLower().Trim())) select b;
+            var result = from b in users where (b.User_Name.ToLower().Trim().Contains(name.ToLower().Trim())&& b.Is_User_Status==true) select b;
             if (result.Count() > 0)
             {
                 return result;
@@ -118,6 +135,18 @@ namespace Service.Service
                 _unit.User.Update(m_update);
                 var result = _unit.Save();
                 if (result > 0) return true;
+            }
+            return false;
+        }
+
+        public async Task<bool> RemoveUser(Guid userId)
+        {
+           var user= await _unit.User.GetById(userId);
+            if (user != null)
+            {
+                _unit.User.Delete(user);
+                var result = _unit.Save();
+                if(result > 0) return true;
             }
             return false;
         }

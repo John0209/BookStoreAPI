@@ -60,9 +60,16 @@ namespace BookStoreAPI.Controller
         [HttpPatch("restoreInventory")]
         public async Task<IActionResult> RestoreInventory(Guid inventoryId)
         {
-            var result = await _inventory.DeleteInventory(inventoryId);
+            var result = await _inventory.RestoreInventory(inventoryId);
             if (result) return Ok("Restore Inventory Success");
             return BadRequest("Restore Inventory Fail");
+        }
+        [HttpDelete("removeInventory")]
+        public async Task<IActionResult> RemoveInventory(Guid inventoryId)
+        {
+            var result = await _inventory.RemoveInventory(inventoryId);
+            if (result) return Ok("Remove Inventory Success");
+            return BadRequest("Remove Inventory Fail");
         }
     }
 }
