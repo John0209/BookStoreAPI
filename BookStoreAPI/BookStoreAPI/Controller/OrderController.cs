@@ -42,6 +42,17 @@ namespace BookStoreAPI.Controller
             }
             return BadRequest("order don't exists");
         }
+        [HttpGet("getOrderByOrderId")]
+        public async Task<IActionResult> GetOrderByOrderId(Guid OrderId)
+        {
+            var respone = await _order.GetOrderByOrderId(OrderId);
+            if (respone != null)
+            {
+                var result = _map.Map<OrderDTO>(respone);
+                return Ok(result);
+            }
+            return BadRequest("order don't exists");
+        }
         [HttpPost("createOrder")]
         public async Task<IActionResult> CreateOrder(OrderDTO dto)
         {

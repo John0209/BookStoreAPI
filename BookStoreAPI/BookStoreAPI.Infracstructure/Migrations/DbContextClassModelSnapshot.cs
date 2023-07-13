@@ -74,6 +74,9 @@ namespace BookStoreAPI.Infracstructure.Migrations
                     b.Property<Guid>("Book_Id")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("Category_Id")
+                        .HasColumnType("int");
+
                     b.Property<bool>("Is_RequestBook_Status")
                         .HasColumnType("bit");
 

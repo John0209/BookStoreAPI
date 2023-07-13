@@ -190,7 +190,7 @@ namespace Service.Service
                 m_update.Book_Quantity= book.Book_Quantity;
                 m_update.Book_Description= book.Book_Description;
                 m_update.Book_Price=book.Book_Price;
-                m_update.Book_Year_Public= book.Book_Year_Public;
+                m_update.Book_Year_Public= 2023;
                 m_update.Is_Book_Status= book.Is_Book_Status;
                 _unit.Books.Update(m_update);
                 var result = _unit.Save();

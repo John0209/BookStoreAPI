@@ -40,7 +40,17 @@ namespace BookStoreAPI.Controller
             {
                 return Ok(respone);
             }
-            return BadRequest("null");
+            return BadRequest("request don't exists !");
+        }
+        [HttpGet("getRequestById")]
+        public async Task<IActionResult> GetRequestById(Guid requestId)
+        {
+            var respone = await _request.GetRequestById(requestId);
+            if (respone != null)
+            {
+                return Ok(respone);
+            }
+            return BadRequest("request don't exists !");
         }
         [HttpPost("createRequestBookNew")]
         public async Task<IActionResult> CreateRequestNew(RequestDTO dto)

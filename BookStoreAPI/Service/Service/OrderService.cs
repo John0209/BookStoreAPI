@@ -114,5 +114,15 @@ namespace Service.Service
             }
             return false;
         }
+
+        public async Task<Order> GetOrderByOrderId(Guid orderId)
+        {
+            var order = await _unit.Order.GetById(orderId);
+            if(order != null)
+            {
+                return order;
+            }
+            return null;
+        }
     }
 }
